@@ -54,10 +54,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Extensions\Extensions.csproj">
-      <Project>{a476f0a7-61b4-4067-8c7b-b51dd2626fba}</Project>
-      <Name>Extensions</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Rat4\Rat4.csproj">
       <Project>{514f58c1-9f3d-4ed1-8355-2ac1a157cba5}</Project>
       <Name>Rat4</Name>
