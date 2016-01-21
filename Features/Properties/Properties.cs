@@ -55,7 +55,6 @@ namespace LectureExamples
         }
     }
 
-
     /// <summary>
     /// A Person class using private member variables with
     /// getters and setters to represent properties.

@@ -1,4 +1,5 @@
 ﻿// Written by Joe Zachary for CS 3500, January 2015
+// Modified by Joe Zachary, January 2016
 
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,9 @@ namespace LectureExamples
             list.Add(5);
             list.Add(7);
             Console.WriteLine("A list: " + list.Render());
+
+            // Use another list extension method
+            Console.WriteLine(list.ScaleSum(10));
         }
 
 
@@ -54,6 +58,20 @@ namespace LectureExamples
         public static String Render<T>(this List<T> list)
         {
             return "[ " + String.Join(" ", list) + " ]";
+        }
+
+        /// <summary>
+        /// Returns the product of scale and the sum of all the elements in the list
+        /// </summary>
+        /// <param name="list"></param>
+        public static int ScaleSum (this List<int> list, int scale)
+        {
+            int sum = 0;
+            foreach (int n in list)
+            {
+                sum += n;
+            }
+            return scale * sum;
         }
     }
 }
