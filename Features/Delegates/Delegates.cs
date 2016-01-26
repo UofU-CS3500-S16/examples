@@ -39,6 +39,9 @@ namespace LectureExamples
 
             // This sorts in reverse order.  We pass in a lambda.
             list.Sort((x, y) => -String.Compare(x, y));
+            Console.WriteLine(String.Join(", ", list));
+
+            // Another way of doing the same way.
             list.Sort(OppCompare);
             Console.WriteLine(String.Join(", ", list));
 
@@ -47,6 +50,9 @@ namespace LectureExamples
             Console.WriteLine(String.Join(", ", list));
         }
 
+        /// <summary>
+        /// Returns the opposite of Compare
+        /// </summary>
         static int OppCompare (string x, string y)
         {
             return -String.Compare(x, y);
@@ -93,7 +99,9 @@ namespace LectureExamples
 
             // We pass in a method that we defined above
             Console.WriteLine(String.Join(", ", FilterList(list, LongerThan5)));
-            FilterList(list, MakeGreaterThanX(10));
+
+            // We use a method that returns a method
+            FilterList(list, MakeLongerThanX(10));
 
             // We pass in a lambda that requires its parameter to be of length 5
             Console.WriteLine(String.Join(", ", FilterList(list, s => s.Length == 5)));
@@ -112,8 +120,13 @@ namespace LectureExamples
         }
 
 
-
-        public static Finder MakeGreaterThanX (int x)
+        /// <summary>
+        /// Returns a method that reports whether a string
+        /// has a longer length than x.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
+        public static Finder MakeLongerThanX (int x)
         {
             return s => s.Length > x;
         }
