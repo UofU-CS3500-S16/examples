@@ -62,7 +62,8 @@ namespace LectureExamples
         {
 
             // Out parameters must be given values
-            x1 = x2 = 0;
+            x1 = 0;
+            x2 = 0;
 
             // Solve the equation
             double disc = b * b - 4 * a * c;
