@@ -67,8 +67,6 @@ namespace UnitTestDemo
         /// Stores value at the given index.  If there 
         /// is no such index, throws an IndexOutOfRangeException.
         /// </summary>
-        /// <param name="index"></param>
-        /// <param name="value"></param>
         public void Set(int index, string value)
         {
             if (index < 0 || index >= size)

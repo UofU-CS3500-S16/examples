@@ -1,5 +1,4 @@
 ﻿// Written by Joe Zachary for CS 3500, January 2015.
-
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using UnitTestDemo;
 using System.Collections.Generic;
@@ -47,6 +46,21 @@ namespace SearchTest
         public void AbsentTest()
         {
             Assert.AreEqual(-1, SearchDemo.Find(numbers, 0));
+        }
+
+        /// <summary>
+        /// Tests that every element in the list is reported as
+        /// being in the right position.
+        /// </summary>
+        [TestMethod]
+        public void AllTest ()
+        {
+            int index = 0;
+            foreach (int item in numbers)
+            {
+                Assert.AreEqual(index, SearchDemo.Find(numbers, item));
+                index++;
+            }
         }
     }
 }

@@ -13,8 +13,8 @@ namespace LectureExamples
     {
         public static void Main(string[] args)
         {
-            //SortingExamples();
-            FilteringExamples();
+            SortingExamples();
+            //FilteringExamples();
         }
 
         /// <summary>
@@ -39,11 +39,17 @@ namespace LectureExamples
 
             // This sorts in reverse order.  We pass in a lambda.
             list.Sort((x, y) => -String.Compare(x, y));
+            list.Sort(OppCompare);
             Console.WriteLine(String.Join(", ", list));
 
             // This sorts by length.  We pass in a lambda.
             list.Sort((x, y) => x.Length - y.Length);
             Console.WriteLine(String.Join(", ", list));
+        }
+
+        static int OppCompare (string x, string y)
+        {
+            return -String.Compare(x, y);
         }
 
         /// <summary>
@@ -87,6 +93,7 @@ namespace LectureExamples
 
             // We pass in a method that we defined above
             Console.WriteLine(String.Join(", ", FilterList(list, LongerThan5)));
+            FilterList(list, MakeGreaterThanX(10));
 
             // We pass in a lambda that requires its parameter to be of length 5
             Console.WriteLine(String.Join(", ", FilterList(list, s => s.Length == 5)));
@@ -106,7 +113,10 @@ namespace LectureExamples
 
 
 
-
+        public static Finder MakeGreaterThanX (int x)
+        {
+            return s => s.Length > x;
+        }
 
 
 

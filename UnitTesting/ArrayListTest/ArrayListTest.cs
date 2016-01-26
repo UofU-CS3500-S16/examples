@@ -1,5 +1,4 @@
 ﻿// Written by Joe Zachary for CS 3500, January 2016
-
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using UnitTestDemo;
@@ -21,6 +20,17 @@ namespace ArrayListTest
         {
             ArrayList list = new ArrayList();
             list.Get(-1);
+        }
+
+        /// <summary>
+        /// Tests a one-element array
+        /// </summary>
+        [TestMethod]
+        public void SmallTest()
+        {
+            ArrayList list = new ArrayList();
+            list.AddLast("10");
+            Assert.AreEqual("10", list.Get(0));
         }
     }
 }

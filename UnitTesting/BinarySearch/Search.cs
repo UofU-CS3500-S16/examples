@@ -1,7 +1,7 @@
 ﻿// Written by Joe Zachary for CS 3500, January 2016.
-
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
 namespace UnitTestDemo
