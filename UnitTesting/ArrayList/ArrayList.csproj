@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{252BDEF4-D4BB-45F5-A8EF-8A987C2417F5}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{8996BEA4-B37C-4574-A874-4D0657DDD38A}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BinarySearch</RootNamespace>
-    <AssemblyName>BinarySearch</AssemblyName>
+    <RootNamespace>ArrayList</RootNamespace>
+    <AssemblyName>ArrayList</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Search.cs" />
+    <Compile Include="ArrayList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

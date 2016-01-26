@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Search
+namespace UnitTestDemo
 {
     /// <summary>
     /// Provides a method for searching sorted arrays

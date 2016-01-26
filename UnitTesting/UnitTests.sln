@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinarySearch", "BinarySearc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchTest", "SearchTest\SearchTest.csproj", "{B42B19F4-B3AC-443E-AA86-A7DA53C6CDC9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArrayList", "ArrayList\ArrayList.csproj", "{8996BEA4-B37C-4574-A874-4D0657DDD38A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArrayListTest", "ArrayListTest\ArrayListTest.csproj", "{AE53CA0D-0C1E-4E5B-8495-BC3F2A260057}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{B42B19F4-B3AC-443E-AA86-A7DA53C6CDC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B42B19F4-B3AC-443E-AA86-A7DA53C6CDC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B42B19F4-B3AC-443E-AA86-A7DA53C6CDC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8996BEA4-B37C-4574-A874-4D0657DDD38A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8996BEA4-B37C-4574-A874-4D0657DDD38A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8996BEA4-B37C-4574-A874-4D0657DDD38A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8996BEA4-B37C-4574-A874-4D0657DDD38A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE53CA0D-0C1E-4E5B-8495-BC3F2A260057}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE53CA0D-0C1E-4E5B-8495-BC3F2A260057}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE53CA0D-0C1E-4E5B-8495-BC3F2A260057}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE53CA0D-0C1E-4E5B-8495-BC3F2A260057}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

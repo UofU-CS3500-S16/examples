@@ -1,7 +1,7 @@
 ﻿// Written by Joe Zachary for CS 3500, January 2015.
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Search;
+using UnitTestDemo;
 using System.Collections.Generic;
 
 namespace SearchTest
