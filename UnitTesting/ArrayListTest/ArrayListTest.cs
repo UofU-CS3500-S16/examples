@@ -32,5 +32,16 @@ namespace ArrayListTest
             list.AddLast("10");
             Assert.AreEqual("10", list.Get(0));
         }
+
+        [TestMethod]
+        public void PrivateTest()
+        {
+            ArrayList list = new ArrayList();
+            list.AddLast("10");
+            PrivateObject listAccessor = new PrivateObject(list);
+            object[] parameters = { 0, "Joe" };
+            listAccessor.Invoke("Set", parameters);
+            Assert.AreEqual("Joe", list.Get(0));
+        }
     }
 }

@@ -1,18 +1,19 @@
 ﻿// Written by Joe Zachary for CS 3500, January 2015
+// Revised by Joe Zachary, January 28, 2016
 
-using System; 
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Diagnostics;
+using System;
 
 namespace LectureExamples
 {
     /// <summary>
-    /// Demonstrates the rational number class
+    /// Demonstrates the Rat class
     /// </summary>
     public class RatDemo
     {
+        /// <summary>
+        /// Demonstrate the Rat class
+        /// </summary>
+        /// <param name="args"></param>
         public static void Main(String[] args)
         {
             Rat r1 = new Rat(3, 4);
@@ -22,43 +23,42 @@ namespace LectureExamples
             Console.WriteLine(r1 + " != " + r2 + " = " + (r1 != r2));
             Console.WriteLine("Hash of " + r1 + " = " + r1.GetHashCode());
             Console.WriteLine(r1 + " + " + 7 + " = " + (r1 + 7));
+            //ReferenceEquals(r1, r2);
         }
     }
 
     /// <summary>
     /// Provides rational numbers that can be expressed as ratios
-    /// of 32-bit integers.  Rats are immutable.
+    /// of machine integers.  Rats are immutable.
     /// </summary>
     public class Rat
     {
-        // Abstraction function: 
-        // A Rat represents the rational num/den
-
-        // Representation invariant:
-        //  den > 0
-        //  gcd(|num|, den) = 1
+        /// <summary>
+        /// The numerator of this rational number
+        /// </summary>
         private int num;
+
+        /// <summary>
+        /// The denominator of this rational number
+        /// </summary>
         private int den;
 
         /// <summary>
-        /// Creates 0
+        /// Creates 0.  Note how "this(0)" invokes the 
+        /// 1-argument constructor.
         /// </summary>
-        public Rat()
-            : this(0, 1)      // This invokes the 2-argument constructor
+        public Rat() : this(0)
         {
         }
 
         /// <summary>
-        /// Creates n
+        /// Creates n.  Note how "this(0)" invokes the
+        /// 2-argument constructor.
         /// </summary>
         public Rat(int n)
-            : this(n, 1)      // This invokes the 2-argument constructor
+            : this(n, 1)      // "this" the 2-argument constructor
         {
         }
-
-
-        // Note the use of the extension method Gcd below.  It works because
-        // the project has a reference to the Extensions project.
 
         /// <summary>
         /// Creates n/d.
@@ -83,13 +83,10 @@ namespace LectureExamples
             }
         }
 
-
-        // Note how this method defines a new operator.  Also note
-        // the use of the checked block.  Without it, the
-        // arithmetic overflows within would be ignored.
-
         /// <summary>
-        /// Returns the sum of r1 and r2.
+        /// Returns the sum of r1 and r2.  Note how this method defines 
+        /// a new operator.  Also note the use of the checked block.  
+        /// Without it, the arithmetic overflows within would be ignored.
         /// </summary>
         /// <exception cref="System.OverflowException">When arithmetic overflow</exception>
         public static Rat operator +(Rat r1, Rat r2)
@@ -106,8 +103,10 @@ namespace LectureExamples
         // override an inherited method.
 
         /// <summary>
-        /// Returns a standard string representation of a rational number
-        /// </summary
+        /// Returns a standard string representation of a rational number.
+        /// Note the use of the override keyword, which is required if you
+        /// want to override an inherited method.
+        /// </summary>
         public override string ToString()
         {
             if (den == 1)
@@ -129,7 +128,7 @@ namespace LectureExamples
             Rat r = o as Rat;
 
             // Make sure r is non-null and its numerator and denominator
-            // the same as those of this.
+            // are the same as those of this.
             return
                 !ReferenceEquals(r, null) &&
                 this.num == r.num &&
@@ -160,7 +159,10 @@ namespace LectureExamples
         }
 
         /// <summary>
-        /// Returns a hash code for this Rat.
+        /// Returns a hash code for this Rat.  Note that
+        /// if you override Equals, you should also override
+        /// GetHashCode.  Otherwise hash tables containing
+        /// Rats won't work properly.
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
@@ -169,7 +171,7 @@ namespace LectureExamples
         }
 
         /// <summary>
-        /// Casts an int to a Rat
+        /// Provides a cast from an int to a Rat
         /// </summary>
         public static implicit operator Rat(int n)
         {
