@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LectureExamples
+namespace ExtensionDemo
 {
     /// <summary>
     /// Provides a GCD extension.

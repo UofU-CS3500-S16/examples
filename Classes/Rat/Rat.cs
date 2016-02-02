@@ -2,6 +2,7 @@
 // Revised by Joe Zachary, January 28, 2016
 
 using System;
+using ExtensionDemo;
 
 namespace LectureExamples
 {

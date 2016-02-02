@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LectureExamples;
+using ExtensionDemo;
 
 namespace RatTests
 {
