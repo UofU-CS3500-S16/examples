@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RatTests", "RatTests\RatTes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions", "Extensions\Extensions.csproj", "{91C94B4E-13EE-4829-9089-5E3CED4C12FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RatAsStruct", "RatAsStruct\RatAsStruct.csproj", "{7A61A4AC-23B6-4B05-A631-3BD41C4031E6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -74,6 +76,18 @@ Global
 		{91C94B4E-13EE-4829-9089-5E3CED4C12FA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{91C94B4E-13EE-4829-9089-5E3CED4C12FA}.Release|x86.ActiveCfg = Release|Any CPU
 		{91C94B4E-13EE-4829-9089-5E3CED4C12FA}.Release|x86.Build.0 = Release|Any CPU
+		{7A61A4AC-23B6-4B05-A631-3BD41C4031E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A61A4AC-23B6-4B05-A631-3BD41C4031E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A61A4AC-23B6-4B05-A631-3BD41C4031E6}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{7A61A4AC-23B6-4B05-A631-3BD41C4031E6}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{7A61A4AC-23B6-4B05-A631-3BD41C4031E6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7A61A4AC-23B6-4B05-A631-3BD41C4031E6}.Debug|x86.Build.0 = Debug|Any CPU
+		{7A61A4AC-23B6-4B05-A631-3BD41C4031E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A61A4AC-23B6-4B05-A631-3BD41C4031E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A61A4AC-23B6-4B05-A631-3BD41C4031E6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{7A61A4AC-23B6-4B05-A631-3BD41C4031E6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{7A61A4AC-23B6-4B05-A631-3BD41C4031E6}.Release|x86.ActiveCfg = Release|Any CPU
+		{7A61A4AC-23B6-4B05-A631-3BD41C4031E6}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
