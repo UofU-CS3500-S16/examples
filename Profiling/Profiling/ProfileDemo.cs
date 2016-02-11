@@ -10,7 +10,7 @@ namespace Profiling
     {
         static void Main()
         {
-            int size = 100; 
+            int size = 10000; 
             Square(size);
             Linear(size);
             Log(size);
