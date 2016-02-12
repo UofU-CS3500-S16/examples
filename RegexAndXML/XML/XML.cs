@@ -182,7 +182,12 @@ namespace RegexAndXML
             // Create the XmlSchemaSet class.  Anything with the namespace "urn:states-schema" will
             // be validated against states3.xsd.
             XmlSchemaSet sc = new XmlSchemaSet();
-            sc.Add("urn:states-schema", "../../states3.xsd");
+
+            // NOTE: To read states3.xsd this way, it must be stored in the same folder with the
+            // executable.  To arrange this, I set the "Copy to Output Directory" propery of states3.xsd to
+            // "Copy If Newer", which will copy states3.xsd as part of each build (if it has changed
+            // since the last build).
+            sc.Add("urn:states-schema", "states3.xsd");
 
             // Configure validation.
             XmlReaderSettings settings = new XmlReaderSettings();
