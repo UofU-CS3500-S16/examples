@@ -28,7 +28,7 @@ namespace RegexAndXML
         {
             WriteExample1();
             WriteExample2();
-            WriteExample3();
+           // WriteExample3();
 
             ReadExample1();
             Console.ReadLine();
