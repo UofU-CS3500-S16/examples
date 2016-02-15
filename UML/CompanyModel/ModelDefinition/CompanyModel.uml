@@ -39,8 +39,8 @@
           <association
             Id="ea9a7e77-67b0-4512-bcdc-9b884e3b9354"
             isDerived="false"
-            sourceEndRoleName=""
-            targetEndRoleName=""
+            sourceEndRoleName="+ Customers"
+            targetEndRoleName="+ Contacts"
             isLeaf="false"
             isAbstract="false">
             <classMoniker
@@ -51,6 +51,7 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="315c5141-52f7-4d6e-a00f-eb1471340029"
+                  name="+ Customers"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -62,7 +63,7 @@
                     <literalString
                       Id="b513478b-7255-4481-9a26-db96f3151c0d"
                       name="Lower"
-                      value="0" />
+                      value="1" />
                   </lowerValueInternal>
                   <upperValueInternal>
                     <literalString
@@ -75,6 +76,7 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="e9e29e74-4595-4d4a-a7e4-7af3d501f304"
+                  name="+ Contacts"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -86,7 +88,7 @@
                     <literalString
                       Id="58c237fb-115f-489b-94f6-45f1910f0d38"
                       name="Lower"
-                      value="1" />
+                      value="0" />
                   </lowerValueInternal>
                   <upperValueInternal>
                     <literalString
@@ -104,7 +106,7 @@
             sourceEndRoleName=""
             targetEndRoleName=""
             isLeaf="false"
-            name="Sits"
+            name="+ SitsIn"
             isAbstract="false">
             <classMoniker
               Id="0b542036-513e-48ec-9d0b-2cee11dffbf1"
@@ -200,36 +202,6 @@
                 LastKnownLocation="CompanyModel.uml" />
             </type_NamedElement>
           </property>
-          <property
-            Id="8a241a26-0c09-41ab-a765-b913aa99edcb"
-            name="Customers"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <lowerValueInternal>
-              <literalString
-                Id="e7268b69-5589-4699-aa37-f9a83edeeb1e"
-                name="Lower"
-                value="0" />
-            </lowerValueInternal>
-            <upperValueInternal>
-              <literalString
-                Id="7ac5e58c-d687-4359-90a4-95ecc12fc076"
-                name="Upper"
-                value="*" />
-            </upperValueInternal>
-            <type_NamedElement>
-              <classMoniker
-                Id="3a89fb12-8989-4d6c-b4b5-31f83f9b0724"
-                LastKnownName="Client"
-                LastKnownLocation="CompanyModel.uml" />
-            </type_NamedElement>
-          </property>
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
@@ -247,9 +219,9 @@
                   name="pct"
                   direction="In">
                   <type_NamedElement>
-                    <primitiveTypeMoniker
-                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
-                      LastKnownName="Integer"
+                    <undefinedTypeMoniker
+                      Id="b10dba99-3341-4362-8320-111f33fe8b03"
+                      LastKnownName="Real"
                       LastKnownLocation="CompanyModel.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -448,6 +420,16 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="6d45d341-92d4-4638-83bb-5278bb944ced"
+        name="Double" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="b10dba99-3341-4362-8320-111f33fe8b03"
+        name="Real" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

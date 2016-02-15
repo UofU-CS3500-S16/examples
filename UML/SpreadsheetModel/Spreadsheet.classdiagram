@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="07a5dbd5-9688-41c8-9c3b-2262bb718a0a" name="Spreadsheet" linkedPackageId="798f9ea5-4c38-4f36-b4bd-ea5cc8c338bd" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <ownedCommentsInternal>
+    <comment Id="55308f94-0cee-4668-8efc-d07d777ce667">
+      <elementDefinition Id="93c94936-4cc8-47d9-8e15-50a1f073f1b2" />
+      <body>Either use strings in place of CellNames, or implement as struct</body>
+      <annotatedElements>
+        <classMoniker Id="81d943be-a225-4d44-bec2-1045bc8d8435" LastKnownName="CellName" />
+      </annotatedElements>
+    </comment>
+    <comment Id="b796c5ea-486f-4876-8d04-a2cfb54f1db5">
+      <elementDefinition Id="19e9ae60-173b-44e7-a726-7b87b631640a" />
+      <body>GetCellsToRecalculate calls GetDirectDependents, which must be overridden in Spreadsheet</body>
+      <annotatedElements>
+        <classMoniker Id="10ac8528-f23f-460d-91b2-77b883792c43" LastKnownName="AbstractSpreadsheet" />
+        <classMoniker Id="372aee12-d8f4-405f-9cc9-4a93154c0fd8" LastKnownName="Spreadsheet" />
+      </annotatedElements>
+    </comment>
+    <comment Id="f8cde565-c10d-4291-b0aa-f78d9f7fb2cc">
+      <elementDefinition Id="bfa7335d-d3da-4ac9-b4b1-bad7f9758ef3" />
+      <body>Contents can also be string or double</body>
+      <annotatedElements>
+        <classMoniker Id="31ffb1fe-b8d4-4d55-bc31-599a0ca996de" LastKnownName="Cell" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <profileInstances>
+    <packageHasProfileInstances Id="faf3f290-3f2d-4971-9fb3-aba6c8256b73">
+      <profileInstance Id="1d0eaa99-d0a3-48d6-a787-f48c28386e3e" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="0811f47e-036f-439f-b722-c0bd762f1591">
+      <profileInstance Id="ec38500a-e850-4b05-bb8f-8af4f904d17a" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="10ac8528-f23f-460d-91b2-77b883792c43" name="AbstractSpreadsheet" isAbstract="true" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="6c9093a7-7c39-444a-a29a-91158b82055a" />
+        <ownedOperationsInternal>
+          <operation Id="082c9cb5-fae0-4182-8f31-65c57f499c88" name="GetCellsToRecalculate" visibility="Protected" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="8f1e9710-694c-4f5c-b494-ad6469667231" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="42b2e6c3-8f5c-433e-8a09-ad075d44e21a" name="ISet&lt;string&gt; names" direction="In" isUnique="false">
+                  <elementDefinition Id="79848054-15eb-4c97-a56e-4a9d0b3add83" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="d096ca82-d871-4417-92d7-9b253323ac5a" name="GetDirectDependents" visibility="Protected" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="06493e16-ad0a-4116-9ba2-bf4da42ea969" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="8ba795b1-ffe0-4b72-94a0-4f480fb8ac4c" name="string name" direction="In" isUnique="false">
+                  <elementDefinition Id="62e78267-4bf6-4a15-ae49-44650e0efb9d" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="372aee12-d8f4-405f-9cc9-4a93154c0fd8" name="Spreadsheet" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="c5e17d96-bda5-4f18-941a-8c94871c81b3" />
+        <suppliersInternal>
+          <dependency Id="5fa19c5e-8e0a-49b4-9004-ea0ffe592665">
+            <classMoniker Id="81d943be-a225-4d44-bec2-1045bc8d8435" LastKnownName="CellName" />
+            <elementDefinition Id="09465bc5-a9f4-43d9-9928-7e0f2962b5a8" />
+          </dependency>
+        </suppliersInternal>
+        <generalsInternal>
+          <generalization Id="343d9477-e211-4e3d-8c9e-f54103fb1a50" isSubstitutable="false">
+            <classMoniker Id="10ac8528-f23f-460d-91b2-77b883792c43" LastKnownName="AbstractSpreadsheet" />
+            <elementDefinition Id="6e1de680-49bd-4b4a-82ec-b18d8ac4cc32" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association Id="3d461f9c-9d5e-48df-80d7-f77ca989262f" isDerived="false" sourceEndRoleName="-Dependencies" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="f1a78537-8e27-4820-b4e0-e735d5f289e0" LastKnownName="DependencyGraph" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f07ce387-5cc9-4343-b4cf-e6c3cd6629c7" name="-Dependencies" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="fd3858b1-9022-4c79-8cdc-458a65f6e53b" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="995102b8-6b45-4652-8433-d02afcbb9349" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="b0f51d72-c70f-4e44-bf3c-b8ede52503ef" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="d8c982fd-cefe-4501-8376-c9a780647b2a" />
+          </association>
+          <association Id="e9aad71b-fc1b-4be4-8d1a-eb5a6e606d13" isDerived="false" sourceEndRoleName="-Cells" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="31ffb1fe-b8d4-4d55-bc31-599a0ca996de" LastKnownName="Cell" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="353751b0-0be5-4795-b5c6-a7b6d55f4e5e" name="-Cells" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="5c421234-a8e1-4b62-ae88-94296e60dc46" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d503693d-201d-4204-af35-5965905840a3" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <lowerValueInternal>
+                    <literalString Id="f1dfc8b0-fd71-4089-a0bd-2fd629531870" name="Lower" value="*">
+                      <elementDefinition Id="5c71a609-7267-4cc6-9923-fcba71d46870" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="23d23fe6-f2a1-4fed-8ddc-01313820486d" name="Upper" value="*">
+                      <elementDefinition Id="de1a03df-550a-4fb8-b465-fef3fce71d48" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="cf58e6e9-71a5-4de0-a64a-e3dbe9ed0904" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="fee48d06-6049-4f45-ad33-00bb8986f491" />
+          </association>
+        </targetEnds>
+        <ownedOperationsInternal>
+          <operation Id="880116b6-904e-402c-a481-50d54e4ddca3" name="GetDirectDependents" visibility="Protected" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="47c33084-87b7-4f4e-87eb-e0955f40b593" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="173179bb-c5d0-4420-a0ef-eeb11b044a82" name="string name" direction="In" isUnique="false">
+                  <elementDefinition Id="ad303bd1-ccee-44b8-8a1f-743f55a4019f" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="86d2225f-6ba0-493c-aa87-960f1d157075" name="Formula" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="e5401f12-defc-47d7-a0be-eef800b5238e" />
+        <targetEnds>
+          <association Id="b4aad539-a90e-446d-a816-bd498d4d6950" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="81d943be-a225-4d44-bec2-1045bc8d8435" LastKnownName="CellName" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="64b94afd-bcef-42e5-ac58-b984ef99d845" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="f777ee54-0c38-4bd9-af91-a8f1467a7097" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="5c971632-cac9-45b6-ae45-c3bc89ea1482" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="6a9a603e-9ab3-4872-b61a-91f91d585cb5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="f122af39-abb6-4fee-a423-f95a84f3afdc" />
+          </association>
+        </targetEnds>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="f1a78537-8e27-4820-b4e0-e735d5f289e0" name="DependencyGraph" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="dc5daf94-fdf7-4b74-afaa-40887c4f3039" />
+        <targetEnds>
+          <association Id="babeaba2-2702-4d5d-b938-590056cfd035" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="81d943be-a225-4d44-bec2-1045bc8d8435" LastKnownName="CellName" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="16ed99cf-4aca-4dfb-ba1e-956782aec186" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="c9c46ae5-687a-4089-919b-6437b2d717ef" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8af8ae29-3def-473d-b416-5c4e14a7d755" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="d1c1d26f-5b63-4d69-9cfb-32e02f430060" name="Lower" value="*">
+                      <elementDefinition Id="ffffd588-b5a8-4067-a98c-6fc5779fb3ea" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="0b68f382-a67f-4409-afa6-cb0d0ec001fc" name="Upper" value="*">
+                      <elementDefinition Id="1df0f311-6740-43ee-a8cb-9031eb9ee68c" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="e6bd6917-ba13-404e-98cf-f0efc7f8546b" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="a5c8c705-1e92-40f2-a395-fd32d815d640" />
+          </association>
+        </targetEnds>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="31ffb1fe-b8d4-4d55-bc31-599a0ca996de" name="Cell" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="24485060-14ef-482b-86a4-889c06b94978" />
+        <targetEnds>
+          <association Id="7b88acee-f885-4d15-8916-ded4ea17b931" isDerived="false" sourceEndRoleName="-Contents" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="86d2225f-6ba0-493c-aa87-960f1d157075" LastKnownName="Formula" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d7e0fe01-937d-44d1-bebc-dc0690e8ab5e" name="-Contents" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="063e1ec9-0cfa-403b-888b-b7eb07172bd0" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="14dde64e-3d85-4983-9d36-882eb0415932" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <lowerValueInternal>
+                    <literalString Id="cd8758dc-7f74-46db-a2fa-1bdaf5d347b3" name="Lower" value="0">
+                      <elementDefinition Id="f6ee2087-7fdb-4ff5-89c5-c36ab048e0ca" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="0c62efd7-5bbc-4a18-bb5b-e3af563acfa5" name="Upper" value="1">
+                      <elementDefinition Id="aeff6086-7010-429f-b648-7d06c7ea194b" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="2896e6ae-e508-4aee-8bea-27bc8c3a241d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="77536ae5-c60c-4e29-8749-64e28b2c13a4" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="d44fcd1e-d081-4a4a-9e89-997d40636acd" name="Value" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="8ba2b4f1-8e6a-471d-a76a-399416ea069d" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="81d943be-a225-4d44-bec2-1045bc8d8435" name="CellName" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="95e39f71-6ef0-4d3c-b633-df253f1eac7c" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="798f9ea5-4c38-4f36-b4bd-ea5cc8c338bd" name="SpreadsheetModel">
+    <elementDefinition Id="8098ebad-b887-4903-91ff-a450d8ea2c2f" />
+  </package>
+</logicalClassDesignerModel>
