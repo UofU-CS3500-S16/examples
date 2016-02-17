@@ -1,8 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="87b36fdf-4319-4ff2-ad45-8a2a71401e0a"
   name="Factory" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <ownedCommentsInternal>
+    <comment
+      Id="d2d8c99d-be0b-4906-abdc-a36f6a866ffa">
+      <body>GetThing() chooses which type of Thing to construct based on its parameter.</body>
+      <annotatedElements>
+        <classMoniker
+          Id="b8ac42b5-cac1-4cbd-8327-25e01b4aa06a"
+          LastKnownName="Thing"
+          LastKnownLocation="Factory.uml" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
   <profileInstances>
     <packageHasProfileInstances
       Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
@@ -17,28 +29,227 @@
         name="StandardProfileL3" />
     </packageHasProfileInstances>
   </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="b8ac42b5-cac1-4cbd-8327-25e01b4aa06a"
+        name="Thing"
+        isAbstract="true"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedOperationsInternal>
+          <operation
+            Id="283f682b-0c4f-4cee-bb24-1cf1ec16213d"
+            name="GetThing"
+            isLeaf="false"
+            isStatic="true"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="3cd332b9-84e4-4874-a78a-d6b090695beb"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="b8ac42b5-cac1-4cbd-8327-25e01b4aa06a"
+                      LastKnownName="Thing"
+                      LastKnownLocation="Factory.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="87bb569f-0359-4c08-9cbe-9080d6e2be8b"
+                  name="Description"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="d79a5e90-a1b9-433b-a046-6841681c48f2"
+            name="Operation1"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="6da20f19-a441-4c7d-a15d-30119d459134"
+            name="Operation2"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="de7d71bf-6387-4557-b124-287fcd6d96bb"
+        name="Description" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="022db0e5-19c8-4c46-aa7e-9c8e59872c60"
+        name="Thing1"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <generalsInternal>
+          <generalization
+            Id="30dd0e7a-7374-4d63-8f73-c3673138781b"
+            isSubstitutable="false">
+            <classMoniker
+              Id="b8ac42b5-cac1-4cbd-8327-25e01b4aa06a"
+              LastKnownName="Thing"
+              LastKnownLocation="Factory.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="784ed70d-c675-4cc4-b5d1-e47ca68f14d3"
+            name="Operation1"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="9dddb3cc-3856-425f-b0b0-4dde4cb2f2e8"
+            name="Thing1"
+            visibility="Protected"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="67196caa-d7c7-4ef2-b904-7a894ae12aef"
+            name="Operation2"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="d6e3930e-3d8e-4fd3-b446-71eea7c17f32"
+        name="Thing2"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <generalsInternal>
+          <generalization
+            Id="e57d6bbd-9359-4b69-b4a6-6654ff75d8d3"
+            isSubstitutable="false">
+            <classMoniker
+              Id="b8ac42b5-cac1-4cbd-8327-25e01b4aa06a"
+              LastKnownName="Thing"
+              LastKnownLocation="Factory.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="bc1ed9a0-9003-49aa-8f2d-2127810b558c"
+            name="Operation1"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="0f931190-7ec7-43bc-aaab-912757ad1906"
+            name="Operation2"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="42df4563-d6be-4776-9820-ea730fed40c1"
+            name="Thing2"
+            visibility="Protected"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="977794fc-9677-4cdf-bb8b-295a5e3a8cad"
+        name="Thing3"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <generalsInternal>
+          <generalization
+            Id="4d79250a-a7e2-43c2-bba0-a20eb549726b"
+            isSubstitutable="false">
+            <classMoniker
+              Id="b8ac42b5-cac1-4cbd-8327-25e01b4aa06a"
+              LastKnownName="Thing"
+              LastKnownLocation="Factory.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="03b71781-44af-4d49-abc3-8e555ec6ea36"
+            name="Thing3"
+            visibility="Protected"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="9bf88d76-8f58-46ab-be6e-956f79512cc3"
+            name="Operation1"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="869ad7d9-4962-4357-97a4-5f72849292ef"
+            name="Operation2"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
   <primitiveType
     Id="220a3521-e091-4221-bae9-3ef9018e845c"
     name="Integer"
     isAbstract="false"
-    isTemplate="false"
     isLeaf="false" />
   <primitiveType
     Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
     name="Boolean"
     isAbstract="false"
-    isTemplate="false"
     isLeaf="false" />
   <primitiveType
     Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
     name="String"
     isAbstract="false"
-    isTemplate="false"
     isLeaf="false" />
   <primitiveType
     Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
     name="UnlimitedNatural"
     isAbstract="false"
-    isTemplate="false"
     isLeaf="false" />
 </modelStoreModel>

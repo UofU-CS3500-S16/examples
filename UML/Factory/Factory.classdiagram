@@ -1,1 +1,138 @@
-﻿ 
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="e12986a2-79e5-4b45-a729-93a2968354a4" name="Factory" linkedPackageId="de7f60a9-dde2-409d-8f03-0906b53d2e4b" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <ownedCommentsInternal>
+    <comment Id="3ed7b478-20a0-48f5-ace5-02d20bd825a1">
+      <elementDefinition Id="d2d8c99d-be0b-4906-abdc-a36f6a866ffa" />
+      <body>GetThing() chooses which type of Thing to construct based on its parameter.</body>
+      <annotatedElements>
+        <classMoniker Id="94a7ac7f-17b4-47ee-97c4-9c9489587144" LastKnownName="Thing" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="94a7ac7f-17b4-47ee-97c4-9c9489587144" name="Thing" isAbstract="true" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="b8ac42b5-cac1-4cbd-8327-25e01b4aa06a" />
+        <ownedOperationsInternal>
+          <operation Id="99115788-0b0f-4b40-8922-ecffa86a5e08" name="GetThing" isLeaf="false" isStatic="true" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="283f682b-0c4f-4cee-bb24-1cf1ec16213d" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="37a6a073-7c62-499c-bf75-866c05a22d31" direction="Return" isUnique="false">
+                  <elementDefinition Id="3cd332b9-84e4-4874-a78a-d6b090695beb" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="52c0a920-1b94-4cf2-a39e-54ad463c3c16" LastKnownName="Thing" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="cf1dfb39-6a2b-4273-a516-8e33c743c886" name="Description" direction="In" isUnique="false">
+                  <elementDefinition Id="87bb569f-0359-4c08-9cbe-9080d6e2be8b" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="5fe16daf-c350-4ea8-9371-59d0010c4c27" name="Operation1" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="d79a5e90-a1b9-433b-a046-6841681c48f2" />
+          </operation>
+          <operation Id="0410993d-7f81-42af-a594-255f90031fc3" name="Operation2" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="6da20f19-a441-4c7d-a15d-30119d459134" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="52c0a920-1b94-4cf2-a39e-54ad463c3c16" name="Thing" isAbstract="false" isLeaf="false" cachedFullName="Factory::Thing">
+        <elementDefinition Id="b8ac42b5-cac1-4cbd-8327-25e01b4aa06a" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="b01565c1-3180-4c4d-a4dd-a14270eae71f" name="Thing1" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="022db0e5-19c8-4c46-aa7e-9c8e59872c60" />
+        <generalsInternal>
+          <generalization Id="3d50da40-7fd3-43be-b5d8-c779ab2ec468" isSubstitutable="false">
+            <classMoniker Id="94a7ac7f-17b4-47ee-97c4-9c9489587144" LastKnownName="Thing" />
+            <elementDefinition Id="30dd0e7a-7374-4d63-8f73-c3673138781b" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation Id="86e2b32d-0359-4b6a-b5a8-753a68fe039a" name="Operation1" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="784ed70d-c675-4cc4-b5d1-e47ca68f14d3" />
+          </operation>
+          <operation Id="a3308a4f-d127-4dea-bfae-a6b53783e23d" name="Thing1" visibility="Protected" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="9dddb3cc-3856-425f-b0b0-4dde4cb2f2e8" />
+          </operation>
+          <operation Id="20fde3c3-f9cb-4a18-b0dc-13a6dcc13f8e" name="Operation2" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="67196caa-d7c7-4ef2-b904-7a894ae12aef" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="163d0b9c-b021-4571-a77f-8127fe40a8fc" name="Thing" isAbstract="false" isLeaf="false" cachedFullName="Factory::Thing">
+        <elementDefinition Id="b8ac42b5-cac1-4cbd-8327-25e01b4aa06a" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="30498aff-d8c0-40d8-aadc-13e684d51a1d" name="Thing2" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="d6e3930e-3d8e-4fd3-b446-71eea7c17f32" />
+        <generalsInternal>
+          <generalization Id="76198064-fc69-47fc-a9a9-a5737af06fd6" isSubstitutable="false">
+            <classMoniker Id="94a7ac7f-17b4-47ee-97c4-9c9489587144" LastKnownName="Thing" />
+            <elementDefinition Id="e57d6bbd-9359-4b69-b4a6-6654ff75d8d3" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation Id="f243a7e4-262c-4a5d-a9d1-ad27009dcab8" name="Operation1" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="bc1ed9a0-9003-49aa-8f2d-2127810b558c" />
+          </operation>
+          <operation Id="1fc4c5f3-c052-4411-b6a6-db8cf165bb39" name="Operation2" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="0f931190-7ec7-43bc-aaab-912757ad1906" />
+          </operation>
+          <operation Id="551c7664-a245-4caa-8f17-320d35365c49" name="Thing2" visibility="Protected" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="42df4563-d6be-4776-9820-ea730fed40c1" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="08a6fb5a-af2c-40f4-86fe-66e22bd46932" name="Thing3" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="977794fc-9677-4cdf-bb8b-295a5e3a8cad" />
+        <generalsInternal>
+          <generalization Id="3063191a-3869-422b-9f50-419cfc745bf7" isSubstitutable="false">
+            <classMoniker Id="94a7ac7f-17b4-47ee-97c4-9c9489587144" LastKnownName="Thing" />
+            <elementDefinition Id="4d79250a-a7e2-43c2-bba0-a20eb549726b" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation Id="b74d51d1-b2d7-4304-aedb-f8579e1ed240" name="Thing3" visibility="Protected" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="03b71781-44af-4d49-abc3-8e555ec6ea36" />
+          </operation>
+          <operation Id="50ede218-2ba5-4e04-aca5-adff4e78d27f" name="Operation1" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="9bf88d76-8f58-46ab-be6e-956f79512cc3" />
+          </operation>
+          <operation Id="4c2e702d-77e9-4f4b-938c-5b8aeda45034" name="Operation2" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="869ad7d9-4962-4357-97a4-5f72849292ef" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="de7f60a9-dde2-409d-8f03-0906b53d2e4b" name="Factory">
+    <elementDefinition Id="87b36fdf-4319-4ff2-ad45-8a2a71401e0a" />
+    <profileInstances>
+      <packageHasProfileInstances Id="0c5a2d91-9021-4b21-81ba-a7c040d8fca3">
+        <profileInstance Id="2e1f50aa-46cb-403d-9429-b3991276bcfa" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="3d03a976-941c-47b6-85cc-eb8c3af7fdcc">
+        <profileInstance Id="41a914a5-ce76-4d56-95bf-d09e8c08c402" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</logicalClassDesignerModel>

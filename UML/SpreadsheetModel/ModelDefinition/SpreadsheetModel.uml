@@ -287,7 +287,20 @@
                   isDerived="false"
                   isDerivedUnion="false"
                   aggregation="None"
-                  isComposite="false" />
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="80e5618d-cff9-458a-979f-6454cdec1258"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="28c1b230-1eb8-4cc1-a227-b897a1532199"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>

@@ -24,20 +24,6 @@
       </annotatedElements>
     </comment>
   </ownedCommentsInternal>
-  <profileInstances>
-    <packageHasProfileInstances Id="faf3f290-3f2d-4971-9fb3-aba6c8256b73">
-      <profileInstance Id="1d0eaa99-d0a3-48d6-a787-f48c28386e3e" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="0811f47e-036f-439f-b722-c0bd762f1591">
-      <profileInstance Id="ec38500a-e850-4b05-bb8f-8af4f904d17a" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-  </profileInstances>
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
       <class Id="10ac8528-f23f-460d-91b2-77b883792c43" name="AbstractSpreadsheet" isAbstract="true" isLeaf="false" isActiveClass="false">
@@ -153,6 +139,16 @@
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd Id="5c971632-cac9-45b6-ae45-c3bc89ea1482" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="89ce6f24-fd32-4aeb-bdf2-3b85ac552bf9" name="Lower" value="*">
+                      <elementDefinition Id="80e5618d-cff9-458a-979f-6454cdec1258" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="81ad7ac6-09e8-4543-8117-0487c2bd00d9" name="Upper" value="*">
+                      <elementDefinition Id="28c1b230-1eb8-4cc1-a227-b897a1532199" />
+                    </literalString>
+                  </upperValueInternal>
                   <elementDefinition Id="6a9a603e-9ab3-4872-b61a-91f91d585cb5" />
                 </memberEnd>
               </associationHasOwnedEnds>
@@ -241,5 +237,19 @@
   </packagedElements>
   <package Id="798f9ea5-4c38-4f36-b4bd-ea5cc8c338bd" name="SpreadsheetModel">
     <elementDefinition Id="8098ebad-b887-4903-91ff-a450d8ea2c2f" />
+    <profileInstances>
+      <packageHasProfileInstances Id="faf3f290-3f2d-4971-9fb3-aba6c8256b73">
+        <profileInstance Id="1d0eaa99-d0a3-48d6-a787-f48c28386e3e" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="0811f47e-036f-439f-b722-c0bd762f1591">
+        <profileInstance Id="ec38500a-e850-4b05-bb8f-8af4f904d17a" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </logicalClassDesignerModel>
