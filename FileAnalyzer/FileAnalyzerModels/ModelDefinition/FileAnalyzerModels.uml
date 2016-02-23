@@ -3,6 +3,81 @@
   dslVersion="1.0.0.0"
   Id="fe4446df-6edd-4ccb-8a71-b79bfb171620"
   name="FileAnalyzerModels" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <ownedCommentsInternal>
+    <comment
+      Id="6c409f28-86b9-4581-97ac-1c73058a8c7f">
+      <body>The way that Launch is impemented means that only one AnalysisWindow can be opened.  
+</body>
+      <annotatedElements>
+        <classMoniker
+          Id="b80f60e2-ba0d-4c39-ad77-87e270b2722d"
+          LastKnownName="Launch"
+          LastKnownLocation="FileAnalyzerModels.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="c2ee3fe8-5cec-407c-8897-62ad7292da22">
+      <body>The bulk of the code is in AnalysisWindow, making it difficult to test.</body>
+      <annotatedElements>
+        <classMoniker
+          Id="2e6703a5-3754-41ba-9fb9-8fe5dbad4ac5"
+          LastKnownName="AnalysisWindow"
+          LastKnownLocation="FileAnalyzerModels.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="8573136e-7399-41db-ba42-76ff1879bc45">
+      <body>This class makes it possible to have multiple windows.  When the last one closes, the application ends.</body>
+      <annotatedElements>
+        <classMoniker
+          Id="4595d306-9b98-41a2-b0a9-bd8b11d84f19"
+          LastKnownName="FileAnalysisApplicationContext"
+          LastKnownLocation="FileAnalyzerModels.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="f8a25e18-a4f0-44ed-9b21-9a0c5431a536">
+      <body>The control code and the model (the part that knows about strings and counts) is factored out of AnalysisWindow and placed in Controller. </body>
+      <annotatedElements>
+        <classMoniker
+          Id="c672323a-d7af-420f-8218-1c40ce7cdb84"
+          LastKnownName="AnalysisWindow"
+          LastKnownLocation="FileAnalyzerModels.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="d763737e-8ae2-4a28-85c8-93b3aa1b15f7">
+      <body>The Controller reacts to AnalysisWindow events by using AnalysisWindow properties and methods.</body>
+      <annotatedElements>
+        <classMoniker
+          Id="4854bbba-5045-482c-819e-49ba85cbe4c5"
+          LastKnownName="Controller"
+          LastKnownLocation="FileAnalyzerModels.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="b7982034-6362-4f32-90c4-7532cf5c939e">
+      <body>The Controller accesses the AnalysisWindow through an interface.</body>
+      <annotatedElements>
+        <classMoniker
+          Id="b3ffa1ee-9664-412a-a6dd-38260b6c906d"
+          LastKnownName="Controller"
+          LastKnownLocation="FileAnalyzerModels.uml" />
+        <interfaceMoniker
+          Id="9b83fab9-7a76-4f96-acd6-3ff923f46153"
+          LastKnownName="IAnalysisView"
+          LastKnownLocation="FileAnalyzerModels.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="1bf772d2-7dfa-48e4-92b9-8cb869a1978e">
+      <body>The model is split from the Controller.  Neither the model nor the view references the Controller.</body>
+    </comment>
+    <comment
+      Id="ecd7f012-f702-436b-8324-bd90f2b772da">
+      <body>The unit tests are run against the Controller, and its assertions are made against the AnalysisView stub, on which the Controller is operating. </body>
+    </comment>
+  </ownedCommentsInternal>
   <profileInstances>
     <packageHasProfileInstances
       Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
@@ -1086,7 +1161,7 @@
             Id="78d080a6-9ea7-4994-b72c-6295e2e0d7ad">
             <interfaceMoniker
               Id="a56e29f9-9230-4556-a750-3eed511662e4"
-              LastKnownName="IAnalysisView1"
+              LastKnownName="IAnalysisView"
               LastKnownLocation="FileAnalyzerModels.uml" />
           </interfaceRealization>
         </suppliersInternal>
@@ -1183,7 +1258,7 @@
             isAbstract="false">
             <interfaceMoniker
               Id="a56e29f9-9230-4556-a750-3eed511662e4"
-              LastKnownName="IAnalysisView1"
+              LastKnownName="IAnalysisView"
               LastKnownLocation="FileAnalyzerModels.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -1235,7 +1310,7 @@
     <packageHasNamedElement>
       <Interface
         Id="a56e29f9-9230-4556-a750-3eed511662e4"
-        name="IAnalysisView1"
+        name="IAnalysisView"
         isAbstract="false"
         isLeaf="false">
         <ownedAttributes>

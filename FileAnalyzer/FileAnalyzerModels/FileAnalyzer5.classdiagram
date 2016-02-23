@@ -1,19 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="a36b0854-3cf0-4c31-87bf-512dc0c465a1" name="FileAnalyzer5" linkedPackageId="970d32fc-9852-440d-bc78-cbce4939f09a" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
-  <profileInstances>
-    <packageHasProfileInstances Id="1b069811-f24d-4bbd-bef1-8ce309e7f13c">
-      <profileInstance Id="89795ecf-6358-4a2a-a335-e6eb2d731400" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="89c14441-4a8c-4c6c-9a25-63c39872f433">
-      <profileInstance Id="e61f94c8-cde4-4fbc-9aac-746ebbc32f0a" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-  </profileInstances>
+  <ownedCommentsInternal>
+    <comment Id="34377ba0-38e8-40d3-87aa-e07925dee9d8">
+      <elementDefinition Id="1bf772d2-7dfa-48e4-92b9-8cb869a1978e" />
+      <body>The model is split from the Controller.  Neither the model nor the view references the Controller.</body>
+    </comment>
+  </ownedCommentsInternal>
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
       <class Id="7e8c9dcf-d2ec-49d9-9029-a0a59e4e7ef6" name="Launch" isAbstract="false" isLeaf="false" isActiveClass="false">
@@ -171,5 +163,19 @@
   </packagedElements>
   <package Id="970d32fc-9852-440d-bc78-cbce4939f09a" name="FileAnalyzerModels">
     <elementDefinition Id="fe4446df-6edd-4ccb-8a71-b79bfb171620" />
+    <profileInstances>
+      <packageHasProfileInstances Id="1b069811-f24d-4bbd-bef1-8ce309e7f13c">
+        <profileInstance Id="89795ecf-6358-4a2a-a335-e6eb2d731400" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="89c14441-4a8c-4c6c-9a25-63c39872f433">
+        <profileInstance Id="e61f94c8-cde4-4fbc-9aac-746ebbc32f0a" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </logicalClassDesignerModel>

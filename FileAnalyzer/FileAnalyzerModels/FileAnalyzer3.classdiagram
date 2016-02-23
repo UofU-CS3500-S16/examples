@@ -1,19 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="8dcb86d1-6f75-4f51-aec4-cf43241e324b" name="FileAnalyzer3" linkedPackageId="62b3d6b8-75ae-460e-983a-3dfa1163576d" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
-  <profileInstances>
-    <packageHasProfileInstances Id="f274b913-715e-4b86-b06a-08a7223b0d2d">
-      <profileInstance Id="062147ca-8a25-454a-a0ca-77d4f2dd421b" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="2bf331f4-0a3c-42ba-9100-00f7f83f6903">
-      <profileInstance Id="437b018a-b535-4230-9633-1f807ea7d491" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-  </profileInstances>
+  <ownedCommentsInternal>
+    <comment Id="9b9e2a38-a7f8-4ded-bd05-42cff81ae90f">
+      <elementDefinition Id="f8a25e18-a4f0-44ed-9b21-9a0c5431a536" />
+      <body>The control code and the model (the part that knows about strings and counts) is factored out of AnalysisWindow and placed in Controller. </body>
+      <annotatedElements>
+        <classMoniker Id="4e9c9a84-2b88-45eb-9309-26fca071d629" LastKnownName="AnalysisWindow" />
+      </annotatedElements>
+    </comment>
+    <comment Id="af8115eb-085e-4194-9565-5c2496af8eb3">
+      <elementDefinition Id="d763737e-8ae2-4a28-85c8-93b3aa1b15f7" />
+      <body>The Controller reacts to AnalysisWindow events by using AnalysisWindow properties and methods.</body>
+      <annotatedElements>
+        <classMoniker Id="3c01626f-0a05-4fb4-b31a-8d2eb95ceb1f" LastKnownName="Controller" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
       <class Id="e6f662d5-f81f-446e-9a32-035238f9fa3c" name="Form" isAbstract="false" isLeaf="false" isActiveClass="false">
@@ -120,5 +122,19 @@
   </packagedElements>
   <package Id="62b3d6b8-75ae-460e-983a-3dfa1163576d" name="FileAnalyzerModels">
     <elementDefinition Id="fe4446df-6edd-4ccb-8a71-b79bfb171620" />
+    <profileInstances>
+      <packageHasProfileInstances Id="f274b913-715e-4b86-b06a-08a7223b0d2d">
+        <profileInstance Id="062147ca-8a25-454a-a0ca-77d4f2dd421b" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="2bf331f4-0a3c-42ba-9100-00f7f83f6903">
+        <profileInstance Id="437b018a-b535-4230-9633-1f807ea7d491" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </logicalClassDesignerModel>

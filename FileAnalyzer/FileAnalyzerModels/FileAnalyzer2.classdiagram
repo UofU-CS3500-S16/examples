@@ -1,5 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="d18121fc-5b2c-4927-bae7-1f5c6b5e15dc" name="FileAnayzer1" linkedPackageId="e15e9338-1066-4c04-bb5b-6b0957e44de7" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <ownedCommentsInternal>
+    <comment Id="b788e30e-76dd-475c-987d-8f67afa256ed">
+      <elementDefinition Id="8573136e-7399-41db-ba42-76ff1879bc45" />
+      <body>This class makes it possible to have multiple windows.  When the last one closes, the application ends.</body>
+      <annotatedElements>
+        <classMoniker Id="7e18065e-aa87-4691-a8b5-25caf9f337d6" LastKnownName="FileAnalysisApplicationContext" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
       <class Id="55b13d1c-4058-495c-bf45-25f8b00cbf16" name="AnalysisWindow" isAbstract="false" isLeaf="false" isActiveClass="false">

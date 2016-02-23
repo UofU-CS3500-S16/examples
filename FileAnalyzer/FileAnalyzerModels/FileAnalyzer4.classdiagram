@@ -1,19 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="daa9ff01-3f39-4402-98b3-d58de37e65b0" name="UMLClassDiagram1" linkedPackageId="bde080e2-0d3f-444e-9c5c-53c5283546db" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
-  <profileInstances>
-    <packageHasProfileInstances Id="32d50451-e1bb-485d-9406-06a52b2dd3f1">
-      <profileInstance Id="347f979b-4603-4fb9-889a-ebfac6cd2584" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="84f39bec-0bd0-431a-bded-cd1f8d3ac724">
-      <profileInstance Id="9fa597ad-cadd-4ed6-a69d-16d8b6bb8fb3" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-  </profileInstances>
+  <ownedCommentsInternal>
+    <comment Id="b1558bee-b7ff-4237-9627-348610e9ee4b">
+      <elementDefinition Id="b7982034-6362-4f32-90c4-7532cf5c939e" />
+      <body>The Controller accesses the AnalysisWindow through an interface.</body>
+      <annotatedElements>
+        <classMoniker Id="c0ef7112-d070-47d6-b953-04804492051e" LastKnownName="Controller" />
+        <interfaceMoniker Id="0f0385fc-0900-44f2-95a9-4f739a4ba50c" LastKnownName="IAnalysisView" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
       <class Id="e89bbefe-a448-489d-a9ac-f938df2b184b" name="Form" isAbstract="false" isLeaf="false" isActiveClass="false">
@@ -142,5 +138,19 @@
   </packagedElements>
   <package Id="bde080e2-0d3f-444e-9c5c-53c5283546db" name="FileAnalyzerModels">
     <elementDefinition Id="fe4446df-6edd-4ccb-8a71-b79bfb171620" />
+    <profileInstances>
+      <packageHasProfileInstances Id="32d50451-e1bb-485d-9406-06a52b2dd3f1">
+        <profileInstance Id="347f979b-4603-4fb9-889a-ebfac6cd2584" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="84f39bec-0bd0-431a-bded-cd1f8d3ac724">
+        <profileInstance Id="9fa597ad-cadd-4ed6-a69d-16d8b6bb8fb3" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </logicalClassDesignerModel>

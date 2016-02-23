@@ -1,19 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="6d259f46-6fb2-4523-b2aa-a8d369c995fa" name="FileAnalyzer4Tester" linkedPackageId="f191fb1f-23cf-4cf7-ae99-4c15818fb6b7" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
-  <profileInstances>
-    <packageHasProfileInstances Id="4dbb5b07-c22a-4a12-91f6-2318984e9dcd">
-      <profileInstance Id="bd31da54-3ca0-422d-bd8b-3c990818a050" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="bcf6c2b2-4bc9-475b-a789-97b6b43f0b65">
-      <profileInstance Id="2c1449e2-26c1-4510-92eb-5f5ef66f64bd" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-  </profileInstances>
+  <ownedCommentsInternal>
+    <comment Id="a65a188f-9912-4ed4-8b1e-ae5143b3176e">
+      <elementDefinition Id="ecd7f012-f702-436b-8324-bd90f2b772da" />
+      <body>The unit tests are run against the Controller, and its assertions are made against the AnalysisView stub, on which the Controller is operating. </body>
+    </comment>
+  </ownedCommentsInternal>
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
       <class Id="9b05dce3-698b-4b92-963a-8c28f56f9a78" name="UnitTests" isAbstract="false" isLeaf="false" isActiveClass="false">
@@ -64,7 +56,7 @@
         <elementDefinition Id="d2bcfaba-0a25-4b5f-a86f-840294d5c3d0" />
         <suppliersInternal>
           <interfaceRealization Id="e7910df9-609e-4efd-8208-76e883159fd0">
-            <interfaceMoniker Id="493c40be-f759-4658-abe8-ecb631a5f798" LastKnownName="IAnalysisView1" />
+            <interfaceMoniker Id="493c40be-f759-4658-abe8-ecb631a5f798" LastKnownName="IAnalysisView" />
             <elementDefinition Id="78d080a6-9ea7-4994-b72c-6295e2e0d7ad" />
           </interfaceRealization>
         </suppliersInternal>
@@ -97,7 +89,7 @@
         <elementDefinition Id="b4759788-3e5b-4693-855c-7352234d9981" />
         <targetEnds>
           <association Id="04becafa-66e4-4104-b653-849837d4bee9" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
-            <interfaceMoniker Id="493c40be-f759-4658-abe8-ecb631a5f798" LastKnownName="IAnalysisView1" />
+            <interfaceMoniker Id="493c40be-f759-4658-abe8-ecb631a5f798" LastKnownName="IAnalysisView" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="3748478e-09f4-4430-ab00-9fbcc4f0b2f9" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
@@ -121,7 +113,7 @@
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <Interface Id="493c40be-f759-4658-abe8-ecb631a5f798" name="IAnalysisView1" isAbstract="false" isLeaf="false">
+      <Interface Id="493c40be-f759-4658-abe8-ecb631a5f798" name="IAnalysisView" isAbstract="false" isLeaf="false">
         <elementDefinition Id="a56e29f9-9230-4556-a750-3eed511662e4" />
         <ownedAttributes>
           <property Id="238fdf19-6b13-4239-b228-72d0a7f29ff5" name="Attributes ()" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
@@ -141,5 +133,19 @@
   </packagedElements>
   <package Id="f191fb1f-23cf-4cf7-ae99-4c15818fb6b7" name="FileAnalyzerModels">
     <elementDefinition Id="fe4446df-6edd-4ccb-8a71-b79bfb171620" />
+    <profileInstances>
+      <packageHasProfileInstances Id="4dbb5b07-c22a-4a12-91f6-2318984e9dcd">
+        <profileInstance Id="bd31da54-3ca0-422d-bd8b-3c990818a050" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="bcf6c2b2-4bc9-475b-a789-97b6b43f0b65">
+        <profileInstance Id="2c1449e2-26c1-4510-92eb-5f5ef66f64bd" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </logicalClassDesignerModel>
