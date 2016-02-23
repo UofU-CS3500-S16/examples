@@ -20,8 +20,9 @@ namespace FileAnalyzer
 
         /// <summary>
         /// Fired when a file is chosen with a file dialog.
+        /// The parameter is the chosen filename.
         /// </summary>
-        public event FileChosenHandler FileChosenEvent;
+        public event Action<string> FileChosenEvent;
 
          /// <summary>
         /// Fired when a close action is requested.
@@ -35,18 +36,16 @@ namespace FileAnalyzer
 
         /// <summary>
         /// Fired when a request is made to count occurrences of a string.
+        /// The parameter is the search string.
         /// </summary>
-        public event CountHandler CountEvent;
+        public event Action<string> CountEvent;
 
         /// <summary>
         /// Sets the line count in the UI.
         /// </summary>
         public int LineCount
         {
-            set
-            {
-                lineCount.Text = value.ToString();
-            }
+            set  { lineCount.Text = value.ToString(); }
         }
 
         /// <summary>
@@ -54,8 +53,7 @@ namespace FileAnalyzer
         /// </summary>
         public int WordCount
         {
-            set
-            { wordCount.Text = value.ToString(); }
+            set { wordCount.Text = value.ToString(); }
         }
 
         /// <summary>
@@ -63,8 +61,7 @@ namespace FileAnalyzer
         /// </summary>
         public int CharCount
         {
-            set
-            { charCount.Text = value.ToString(); }
+            set { charCount.Text = value.ToString(); }
         }
 
         /// <summary>
@@ -72,8 +69,7 @@ namespace FileAnalyzer
         /// </summary>
         public String SearchString
         {
-            set
-            { substringBox.Text = value; }
+            set { substringBox.Text = value; }
         }
 
         /// <summary>
@@ -81,24 +77,23 @@ namespace FileAnalyzer
         /// </summary>
         public int SubstringCount
         {
-            set
-            { substringCount.Text = value.ToString(); }
+            set { substringCount.Text = value.ToString(); }
         }
 
         /// <summary>
         /// Sets the title in the UI
         /// </summary>
-        public void SetTitle(string title)
+        public string Title
         {
-            Text = title;
+            set { Text = value; }
         }
 
         /// <summary>
         /// Shows the message in the UI.
         /// </summary>
-        public void ShowMessage(string message)
+        public string Message
         {
-            MessageBox.Show(message);
+            set { MessageBox.Show(value); }
         }
 
         /// <summary>

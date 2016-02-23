@@ -3,23 +3,13 @@
 namespace FileAnalyzer
 {
     /// <summary>
-    /// Delegate for FileChosenEvents,
-    /// </summary>
-    public delegate void FileChosenHandler(string filename);
-
-    /// <summary>
-    /// Delegate for CountEvents.
-    /// </summary>
-    public delegate void CountHandler(string searchString);
-
-    /// <summary>
     /// Controllable interface of AnalysisWindow
     /// </summary>
     public interface IAnalysisView
     {
-        event FileChosenHandler FileChosenEvent;
+        event Action<string> FileChosenEvent;
 
-        event CountHandler CountEvent;
+        event Action<string> CountEvent;
 
         event Action CloseEvent;
 
@@ -35,9 +25,9 @@ namespace FileAnalyzer
 
         int WordCount { set; }
 
-        void SetTitle(string filename);
+        string Title { set; }
 
-        void ShowMessage(string message);
+        string Message { set; }
 
         void DoClose();
 

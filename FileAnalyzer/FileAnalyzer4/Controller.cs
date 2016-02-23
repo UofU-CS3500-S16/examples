@@ -41,11 +41,11 @@ namespace FileAnalyzer
                 window.LineCount = CountLines(fileContents);
                 window.SubstringCount = 0;
                 window.SearchString = "";
-                window.SetTitle(filename);
+                window.Title = filename;
             }
             catch (Exception ex)
             {
-                window.ShowMessage("Unable to open file\n" + ex.Message);
+                window.Message = "Unable to open file\n" + ex.Message;
             }
         }
 

@@ -5,32 +5,13 @@ namespace FileAnalyzer4Tester
 {
     class AnalysisViewStub : IAnalysisView
     {
-        /// <summary>
-        /// Resets all four "Called" properties.
-        /// </summary>
-        public void Reset()
-        {
-            CalledDoClose = false;
-            CalledOpenNew = false;
-            CalledSetTitle = null;
-            CalledShowMessage = null;
-        }
-
-        // These four properties record whether a method has been called
+        // These two properties record whether a method has been called
         public bool CalledDoClose
         {
             get; private set;
         }
 
         public bool CalledOpenNew
-        {
-            get; private set;
-        }
-        public string CalledSetTitle
-        {
-            get; private set;
-        }
-        public string CalledShowMessage
         {
             get; private set;
         }
@@ -68,7 +49,7 @@ namespace FileAnalyzer4Tester
             }
         }
 
-        // These four properties implement the interface
+        // These six properties implement the interface
         public int CharCount
         {
             set; get;
@@ -94,16 +75,26 @@ namespace FileAnalyzer4Tester
             set; get;
         }
 
+        public string Title
+        {
+            set; get;
+        }
+
+        public string Message
+        {
+            set; get;
+        }
+
         // These four events implement the interface
         public event Action CloseEvent;
 
-        public event CountHandler CountEvent;
+        public event Action<string> CountEvent;
 
-        public event FileChosenHandler FileChosenEvent;
+        public event Action<string> FileChosenEvent;
 
         public event Action NewEvent;
 
-        // These four methods implement the interface
+        // These two methods implement the interface
         public void DoClose()
         {
             CalledDoClose = true;
@@ -112,16 +103,6 @@ namespace FileAnalyzer4Tester
         public void OpenNew()
         {
             CalledOpenNew = true;
-        }
-
-        public void SetTitle(string filename)
-        {
-            CalledSetTitle = filename;
-        }
-
-        public void ShowMessage(string message)
-        {
-            CalledShowMessage = message;
         }
     }
 }
