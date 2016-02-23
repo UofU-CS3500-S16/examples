@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="a36b0854-3cf0-4c31-87bf-512dc0c465a1" name="FileAnalyzer5" linkedPackageId="970d32fc-9852-440d-bc78-cbce4939f09a" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="1b069811-f24d-4bbd-bef1-8ce309e7f13c">
+      <profileInstance Id="89795ecf-6358-4a2a-a335-e6eb2d731400" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="89c14441-4a8c-4c6c-9a25-63c39872f433">
+      <profileInstance Id="e61f94c8-cde4-4fbc-9aac-746ebbc32f0a" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="7e8c9dcf-d2ec-49d9-9029-a0a59e4e7ef6" name="Launch" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="dcb9dce3-5bd3-4dee-9e9f-ef77b12df4ae" />
+        <suppliersInternal>
+          <dependency Id="744d82db-daaa-4997-bcb4-6be11584d330">
+            <classMoniker Id="e603704a-4dab-43bb-ae8b-aea303972d6e" LastKnownName="FileAnalysisApplicationContext" />
+            <elementDefinition Id="6a87db14-5fcb-493d-8e9a-0623df75470c" />
+          </dependency>
+        </suppliersInternal>
+        <ownedOperationsInternal>
+          <operation Id="caecc7f1-1838-479e-ba11-e5424f69f129" name="Main" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="753013e3-e8de-45c7-9482-693417e9d484" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="e603704a-4dab-43bb-ae8b-aea303972d6e" name="FileAnalysisApplicationContext" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="1ba463fb-0b49-4619-8271-9cbe1576747a" />
+        <suppliersInternal>
+          <dependency Id="5e1113a3-1bb9-40f7-af46-5a1ec4ddcf3c">
+            <classMoniker Id="7281269f-f79a-4322-8055-a5db659bb9f0" LastKnownName="AnalysisWindow" />
+            <elementDefinition Id="ff0a3bf2-bdd2-4493-ad8b-03a6d464457e" />
+          </dependency>
+          <dependency Id="350b9094-3cd1-4cd8-8cae-249bcd62220d">
+            <classMoniker Id="acd5cbf2-ca55-4227-ab6a-2f448ab8dcd1" LastKnownName="Controller" />
+            <elementDefinition Id="c2666fa6-3b50-4a87-ac94-e7645dcaf0b5" />
+          </dependency>
+        </suppliersInternal>
+        <ownedOperationsInternal>
+          <operation Id="e73bfeec-b275-4ec3-bf15-dcd7bd5952af" name="RunNew" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="8be8b743-08a4-4387-9569-ae0b823169a1" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="451be5c7-fc84-4ae3-9967-b93b0ea3fc67" name="Form" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="c426ee77-61a3-40af-9487-dad642ba552f" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="c4bd2f6f-1267-4769-a640-d4e3d19bfb71" name="IAnalysisView" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="982e1554-a4c5-4c73-94b2-c0b4042c2453" />
+        <ownedAttributes>
+          <property Id="809ba731-6136-4a28-ab25-b8d6a9cf4ab1" name="Attributes ()" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="93e6b36d-46d4-4b07-b820-ba978c291c5f" />
+          </property>
+          <property Id="49ebf2e9-c292-4be5-a85b-513cf29878db" name="Events ()" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="0575faee-4e7f-41a8-b6ad-dced99fd995d" />
+          </property>
+        </ownedAttributes>
+        <ownedOperations>
+          <operation Id="a3015aa6-b523-46fc-af81-75504c9fd92c" name="Methods" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="47fb99c7-817d-4647-892d-a439d2ada631" />
+          </operation>
+        </ownedOperations>
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="7281269f-f79a-4322-8055-a5db659bb9f0" name="AnalysisWindow" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="eaf45d76-70ed-47d3-8a15-1c85ecb318e0" />
+        <suppliersInternal>
+          <dependency Id="b4c38c3c-7c96-4dc8-8d97-91426d4182ae">
+            <classMoniker Id="e603704a-4dab-43bb-ae8b-aea303972d6e" LastKnownName="FileAnalysisApplicationContext" />
+            <elementDefinition Id="b1f42ecb-b61d-4717-82cf-187ff923be79" />
+          </dependency>
+          <interfaceRealization Id="0b32c008-95e3-4c3b-9bab-68440db386be">
+            <interfaceMoniker Id="c4bd2f6f-1267-4769-a640-d4e3d19bfb71" LastKnownName="IAnalysisView" />
+            <elementDefinition Id="d6d7fb8b-cab6-4801-90b1-18b25da5c512" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <generalsInternal>
+          <generalization Id="72b8eac9-b853-4d0c-9c10-ed53d2204b51" isSubstitutable="false">
+            <classMoniker Id="451be5c7-fc84-4ae3-9967-b93b0ea3fc67" LastKnownName="Form" />
+            <elementDefinition Id="3ddb193f-8669-4cf1-a977-e3493bc6a820" />
+          </generalization>
+        </generalsInternal>
+        <ownedAttributesInternal>
+          <property Id="74d2f93c-0e78-4238-ad1d-b84fdfc9e7e4" name="Attributes ()" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="252b8015-50b1-48a3-905a-ce5ca7c3bb23" />
+          </property>
+          <property Id="4d76433a-53e0-4c6d-8e16-787974d7b5b8" name="Events()" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="e56d8f98-8ee7-4cd7-8f8c-08890b2e0a81" />
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="2df2e3aa-0d8b-4b78-9031-e0a215c6a86e" name="AnalysisWindow" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="bc79d0b9-3904-4dd4-bd07-44bcbd1eb9e7" />
+          </operation>
+          <operation Id="ab1fd7c7-507e-4db7-b4ff-e7e1e0d05c32" name="Methods" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="a0d186aa-3650-4968-9a7c-38605fc3fd81" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="acd5cbf2-ca55-4227-ab6a-2f448ab8dcd1" name="Controller" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="6c44f11f-0d49-4d60-a763-0e52833ac716" />
+        <targetEnds>
+          <association Id="c4571bf8-d585-4740-b3c6-acd7df382080" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <interfaceMoniker Id="c4bd2f6f-1267-4769-a640-d4e3d19bfb71" LastKnownName="IAnalysisView" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4d07a439-9608-45d8-b154-9a30895f95b9" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="40e0bf65-2823-4752-9c45-399ab4438695" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="53fdda94-f30e-49a1-a7df-dc44bd0f7c67" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="6a87921c-9269-4872-a992-8620e7637a9e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="af0336ff-7f39-4405-903e-7675f157e191" />
+          </association>
+          <association Id="754ca5a3-bf0f-4be8-990f-799cb5cc5225" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="77f51312-29dd-4eca-956c-63c11405a355" LastKnownName="Model" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="88ad17d9-1a2b-44e0-bc7f-c8685d2b4514" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="044911dd-39c0-4418-abab-4df8ec3b1d67" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="057dfbf9-78d8-44a4-8fe0-f9564fbeee56" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="68864b9d-fbd3-4ddc-9cd2-72a1d6788945" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="2182a5bb-929e-412d-ac5a-e8da3cb7b723" />
+          </association>
+        </targetEnds>
+        <ownedOperationsInternal>
+          <operation Id="607be2bf-9542-43da-bc6e-afa10db8c12c" name="Controller" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="fee083b8-f4f9-4fa7-9acc-6e1d6ce17c1f" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="77f51312-29dd-4eca-956c-63c11405a355" name="Model" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="83981169-dc88-4cbd-87f0-3c27c4035a11" />
+        <ownedOperationsInternal>
+          <operation Id="cc22498c-8719-451d-91f5-c24ce6af839b" name="Model" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="66aa04e8-543f-4bd9-a971-d7d949f2a8ab" />
+          </operation>
+          <operation Id="a2636e10-31db-407d-a7fc-139a5fcfb438" name="Methods" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="26d08eb7-ee86-4895-b748-0fc10d0009f7" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="970d32fc-9852-440d-bc78-cbce4939f09a" name="FileAnalyzerModels">
+    <elementDefinition Id="fe4446df-6edd-4ccb-8a71-b79bfb171620" />
+  </package>
+</logicalClassDesignerModel>

@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="6d259f46-6fb2-4523-b2aa-a8d369c995fa" name="FileAnalyzer4Tester" linkedPackageId="f191fb1f-23cf-4cf7-ae99-4c15818fb6b7" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="4dbb5b07-c22a-4a12-91f6-2318984e9dcd">
+      <profileInstance Id="bd31da54-3ca0-422d-bd8b-3c990818a050" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="bcf6c2b2-4bc9-475b-a789-97b6b43f0b65">
+      <profileInstance Id="2c1449e2-26c1-4510-92eb-5f5ef66f64bd" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="9b05dce3-698b-4b92-963a-8c28f56f9a78" name="UnitTests" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="ea4c9208-c1f2-41bf-9316-c7b0ef9acd9b" />
+        <targetEnds>
+          <association Id="f82905ed-5c10-4092-89db-32c96852c169" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="24f2e323-ea13-4de8-bd3b-60f47f4ce9b8" LastKnownName="AnalysisViewStub" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0e1bf07e-c4ff-42a7-a531-da7269afd818" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="e48395ec-7d98-400d-a80b-240c5efeb118" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="897b48d2-4a88-46e5-9313-c4484045357a" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="c9e54f17-d43c-4963-9738-e5368373813c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="257eab6f-e4a4-43eb-9161-fc1cc19b9f0a" />
+          </association>
+          <association Id="8459f51a-b552-4e9a-abf0-1c170211daa0" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="11bf1179-ebf7-4059-8b4e-4f045b9f92c4" LastKnownName="Controller" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3fc4b715-94ae-4c0d-a350-ca188da12573" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="517e89ef-ac7a-4b1d-b57f-f4b309aada5e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a771cbd1-fd53-47dc-a8cb-c1dae36ecef8" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="58fa3bdd-48fe-4a5f-bff2-6a65ce33eced" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="b506456b-cdb0-47fe-a2af-521053d9d294" />
+          </association>
+        </targetEnds>
+        <ownedOperationsInternal>
+          <operation Id="c009c776-32f9-4040-9ed9-8a3ec18e0482" name="TestMethods" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="fd5cc40a-3647-437f-9505-29e3f4e55d73" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="24f2e323-ea13-4de8-bd3b-60f47f4ce9b8" name="AnalysisViewStub" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="d2bcfaba-0a25-4b5f-a86f-840294d5c3d0" />
+        <suppliersInternal>
+          <interfaceRealization Id="e7910df9-609e-4efd-8208-76e883159fd0">
+            <interfaceMoniker Id="493c40be-f759-4658-abe8-ecb631a5f798" LastKnownName="IAnalysisView1" />
+            <elementDefinition Id="78d080a6-9ea7-4994-b72c-6295e2e0d7ad" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedAttributesInternal>
+          <property Id="c234d99a-7fb9-487a-bef1-405b9b466494" name="Attributes ()" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="137d6435-5db2-4c3f-b6c5-f10841c1f77b" />
+          </property>
+          <property Id="fa950405-d280-4fa8-8804-4fbe6f271c67" name="Events()" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="4272dd11-1f26-45d0-aab1-171df6e360ce" />
+          </property>
+          <property Id="f5f91578-fe57-4fb7-ae3d-8ea5a1d57bab" name="Extras ()" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="f71731bb-4a00-4966-bf7a-2f39b44aff22" />
+          </property>
+          <property Id="483d2e44-395c-4f4a-b25e-1e75befd83d3" name="FireEvents ()" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="1f26db09-b448-4eba-9c57-da7df7546013" />
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="4ca4f253-98d9-46d4-9022-441d3380cdb1" name="AnalysisViewStub" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="ad1e9f6f-4239-4ca2-b7aa-9d16210a4b7d" />
+          </operation>
+          <operation Id="b45a537d-520c-471c-b04d-c33b9bb99766" name="Methods" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="d96b5b32-a9bf-49f6-bc83-7d7e11b4906e" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="11bf1179-ebf7-4059-8b4e-4f045b9f92c4" name="Controller" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="b4759788-3e5b-4693-855c-7352234d9981" />
+        <targetEnds>
+          <association Id="04becafa-66e4-4104-b653-849837d4bee9" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <interfaceMoniker Id="493c40be-f759-4658-abe8-ecb631a5f798" LastKnownName="IAnalysisView1" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3748478e-09f4-4430-ab00-9fbcc4f0b2f9" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="c6661f35-063f-4719-82ff-4817b7ae7e2e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="fb529ccd-6edc-42a6-8d47-e4d7a74ab3ff" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="9adabd14-4cb8-43db-8b1e-9cc0701e9ac2" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="10e737f3-6534-4f5d-ab7b-6f89621a95e9" />
+          </association>
+        </targetEnds>
+        <ownedOperationsInternal>
+          <operation Id="8b251c35-ec8c-48f4-9069-0a5159cc4bf6" name="Controller" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="842853d4-1ab4-42b4-87b9-258c0b6add88" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="493c40be-f759-4658-abe8-ecb631a5f798" name="IAnalysisView1" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a56e29f9-9230-4556-a750-3eed511662e4" />
+        <ownedAttributes>
+          <property Id="238fdf19-6b13-4239-b228-72d0a7f29ff5" name="Attributes ()" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="efee1cce-0e37-4a11-a302-1b43fc4456a0" />
+          </property>
+          <property Id="0a57c699-b16c-49c1-a844-dd38a6de6d3b" name="Events ()" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="e6b6060c-7b45-4520-8a69-dcb43f2a036d" />
+          </property>
+        </ownedAttributes>
+        <ownedOperations>
+          <operation Id="7df7940e-3ca5-49de-8a05-a6ca346934ea" name="Methods" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="fb730cdc-21a8-4c7f-b512-7b620de74665" />
+          </operation>
+        </ownedOperations>
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="f191fb1f-23cf-4cf7-ae99-4c15818fb6b7" name="FileAnalyzerModels">
+    <elementDefinition Id="fe4446df-6edd-4ccb-8a71-b79bfb171620" />
+  </package>
+</logicalClassDesignerModel>
