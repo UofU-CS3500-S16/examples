@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<States xmlns="urn:states-schema">
+<States>
   <State Name="Utah" Capital="Salt Lake City" />
   <State Name="Nevada" Capital="Carson City" />
   <State Name="Arizona" Capital="Phoenix" />

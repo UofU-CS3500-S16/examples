@@ -187,7 +187,7 @@ namespace RegexAndXML
             // executable.  To arrange this, I set the "Copy to Output Directory" propery of states3.xsd to
             // "Copy If Newer", which will copy states3.xsd as part of each build (if it has changed
             // since the last build).
-            sc.Add("urn:states-schema", "states3.xsd");
+            sc.Add(null, "states3.xsd");
 
             // Configure validation.
             XmlReaderSettings settings = new XmlReaderSettings();
