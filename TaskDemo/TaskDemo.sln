@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputeBound", "ComputeBoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interrupt", "Interrupt\Interrupt.csproj", "{BB1C8B97-AC08-42CD-B6E6-CA9AA3409F17}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interrupt2", "Interrupt2\Interrupt2.csproj", "{3293AF99-6262-4DA3-A305-5ABEAF750564}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{BB1C8B97-AC08-42CD-B6E6-CA9AA3409F17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB1C8B97-AC08-42CD-B6E6-CA9AA3409F17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB1C8B97-AC08-42CD-B6E6-CA9AA3409F17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3293AF99-6262-4DA3-A305-5ABEAF750564}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3293AF99-6262-4DA3-A305-5ABEAF750564}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3293AF99-6262-4DA3-A305-5ABEAF750564}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3293AF99-6262-4DA3-A305-5ABEAF750564}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

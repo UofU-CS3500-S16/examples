@@ -73,6 +73,7 @@
             this.StopButton.TabIndex = 3;
             this.StopButton.Text = "Cancel";
             this.StopButton.UseVisualStyleBackColor = true;
+            this.StopButton.Click += new System.EventHandler(this.StopButton_Click);
             // 
             // HailStart
             // 
