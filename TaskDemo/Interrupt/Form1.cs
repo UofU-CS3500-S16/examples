@@ -25,6 +25,8 @@ namespace Interrupt
             int highRange = Int32.Parse(TopOfRange.Text);
             StartButton.Enabled = false;
             StopButton.Enabled = true;
+            HailStart.Text = "";
+            HailLength.Text = "";
             Task<Pair> task = new Task<Pair>(() => LongestSequence(1, highRange, 1));
             task.Start();
             task.Wait();

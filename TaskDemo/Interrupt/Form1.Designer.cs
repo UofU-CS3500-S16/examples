@@ -71,7 +71,7 @@
             this.StopButton.Name = "StopButton";
             this.StopButton.Size = new System.Drawing.Size(234, 23);
             this.StopButton.TabIndex = 3;
-            this.StopButton.Text = "Cancel Button";
+            this.StopButton.Text = "Cancel";
             this.StopButton.UseVisualStyleBackColor = true;
             // 
             // HailStart
