@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interrupt", "Interrupt\Inte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interrupt2", "Interrupt2\Interrupt2.csproj", "{3293AF99-6262-4DA3-A305-5ABEAF750564}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synchronization", "Synchronization\Synchronization.csproj", "{255493BC-1FB4-447C-9470-EACBA0F3B722}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{3293AF99-6262-4DA3-A305-5ABEAF750564}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3293AF99-6262-4DA3-A305-5ABEAF750564}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3293AF99-6262-4DA3-A305-5ABEAF750564}.Release|Any CPU.Build.0 = Release|Any CPU
+		{255493BC-1FB4-447C-9470-EACBA0F3B722}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{255493BC-1FB4-447C-9470-EACBA0F3B722}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{255493BC-1FB4-447C-9470-EACBA0F3B722}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{255493BC-1FB4-447C-9470-EACBA0F3B722}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

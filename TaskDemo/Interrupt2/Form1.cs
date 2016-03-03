@@ -58,6 +58,7 @@ namespace Interrupt
             catch (Exception)
             {
             }
+
             StopButton.Enabled = false;
             StartButton.Enabled = true;
             Cancel = false;
