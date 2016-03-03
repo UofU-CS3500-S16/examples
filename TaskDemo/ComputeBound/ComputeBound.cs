@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace TaskDemo
 {
-    class Program
+    class ComputeBound
     {
         /// <summary>
         /// Shows the impact of multi-threading.
