@@ -6,17 +6,28 @@ namespace Synchronization
 {
     public class Synch
     {
+        /// <summary>
+        /// Demonstrates synchronization of Tasks.
+        /// </summary>
         public static void Main()
         {
             new Synch().Compute(100000000);
         }
 
+        /// <summary>
+        /// This variable is shared by the two tasks created below.
+        /// </summary>
         private int Total { get; set; }
 
-        public void Compute (long n)
+        /// <summary>
+        /// Creates two tasks.  One increments Total n times, the other
+        /// decrements Total n times.  The value of Total is displayed
+        /// every 500 msec.
+        /// </summary>
+        public void Compute(int n)
         {
-            Task t1 = new Task(() => Add(n));
-            Task t2 = new Task(() => Subtract(n));
+            Task t1 = new Task(() => Increment(n));
+            Task t2 = new Task(() => Decrement(n));
             t1.Start();
             t2.Start();
 
@@ -30,7 +41,10 @@ namespace Synchronization
             Console.ReadLine();
         }
 
-        public void Add (long n)
+        /// <summary>
+        /// Increments Total n times.
+        /// </summary>
+        public void Increment(int n)
         {
             while (n > 0)
             {
@@ -40,7 +54,10 @@ namespace Synchronization
             Console.WriteLine("Add done");
         }
 
-        public void Subtract (long n)
+        /// <summary>
+        /// Decements Total n times.
+        /// </summary>
+        public void Decrement(int n)
         {
             while (n > 0)
             {
