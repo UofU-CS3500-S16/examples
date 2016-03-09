@@ -42,7 +42,7 @@ namespace Interrupt
             // isn't blocked so the GUI remains responsive.  
             task.Start();
         }
-        
+
         /// <summary>
         /// Handles the Click event of the StopButton control.
         /// </summary>
@@ -60,16 +60,19 @@ namespace Interrupt
         /// </summary>
         public void ComputeLongestSequence(int start, int stop, int delta)
         {
-            // Unfortunately, the statements below that manipulate the GUI components will fail for a subtle
-            // reason.  A GUI component (HailStart, HailLength, StopButton, StartButton) can be modified only
-            // from the GUI event thread.  The Task running this method will NOT be running on the GUI event
-            // thread.  The next example shows one way to solve this problem.
             try
             {
                 // Compute the sequence and display the result
                 Pair result = LongestSequence(start, stop, delta);
-                HailStart.Text = result.Start.ToString();
-                HailLength.Text = result.Length.ToString();
+
+                // The Invoke method is defined on GUI components.  It takes a delegate as
+                // a parameter and arranges for that delegate to be executed (eventually)
+                // on the GUI event thread.
+                Invoke((Action)(() =>
+                {
+                    HailStart.Text = result.Start.ToString();
+                    HailLength.Text = result.Length.ToString();
+                }));
             }
             catch (Exception)
             {
@@ -77,8 +80,11 @@ namespace Interrupt
             }
 
             // Renable the GUI
-            StopButton.Enabled = false;
-            StartButton.Enabled = true;
+            Invoke((Action)(() =>
+            {
+                StopButton.Enabled = false;
+                StartButton.Enabled = true;
+            }));
             Cancel = false;
         }
 

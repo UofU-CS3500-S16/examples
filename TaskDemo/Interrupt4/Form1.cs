@@ -32,17 +32,12 @@ namespace Interrupt
             HailStart.Text = "";
             HailLength.Text = "";
 
-            // Start a task to compute AND display the solution.  Initially, we set the Cancel property
-            // to false.  If the Stop button is clicked during the computation, it will set Cancel to true.
-            // It is the responsibility of the new Task to notice this and cancel itself.
+            // Compute the longest sequence.  We are counting on this method returning
+            // without blocking.
             Cancel = false;
-            Task task = new Task(() => ComputeLongestSequence(1, highRange, 1));
-
-            // Note that we start the Task but we don't wait for it to complete.  Thus, the GUI event thread
-            // isn't blocked so the GUI remains responsive.  
-            task.Start();
+            ComputeLongestSequence(1, highRange, 1);
         }
-        
+
         /// <summary>
         /// Handles the Click event of the StopButton control.
         /// </summary>
@@ -58,22 +53,25 @@ namespace Interrupt
         /// Computes the longest hailstone sequence in the specified interal and displays
         /// it in the GUI.
         /// </summary>
-        public void ComputeLongestSequence(int start, int stop, int delta)
+        public async void ComputeLongestSequence(int start, int stop, int delta)
         {
-            // Unfortunately, the statements below that manipulate the GUI components will fail for a subtle
-            // reason.  A GUI component (HailStart, HailLength, StopButton, StartButton) can be modified only
-            // from the GUI event thread.  The Task running this method will NOT be running on the GUI event
-            // thread.  The next example shows one way to solve this problem.
-            try
+            // Start a task to compute the sequence and then await the result
+            Task<Pair> pair = new Task<Pair>(() => LongestSequence(start, stop, delta));
+            pair.Start();
+
+            // An async method (see the method header) can use the await keyword.  When the await is executed, there
+            // are two possibilities:
+            // (1) The task has already finished.  The method continues along as possible.
+            // (2) The task has not finished.  A Task is created that will wait for the computation Task to complete.
+            //     When it does, this new Task will execute the remainder of the method body.  The new Task is returned
+            //     immediately.  Even better, since the await happened on the GUI event thread, the new Task will be
+            //     executed there as well.
+            Pair result = await pair;
+
+            if (result != null)
             {
-                // Compute the sequence and display the result
-                Pair result = LongestSequence(start, stop, delta);
                 HailStart.Text = result.Start.ToString();
                 HailLength.Text = result.Length.ToString();
-            }
-            catch (Exception)
-            {
-                // An exception will be thrown if LongestSequence decides to cancel
             }
 
             // Renable the GUI
@@ -96,7 +94,7 @@ namespace Interrupt
                 // Each time through the loop we consider the whether or not to cancel
                 if (Cancel)
                 {
-                    throw new Exception("Cancelled");
+                    return null;
                 }
                 int length = HailstoneLength(n);
                 if (length > longestLength)
@@ -133,7 +131,7 @@ namespace Interrupt
         /// <summary>
         /// A Length/Start pair
         /// </summary>
-        public struct Pair
+        public class Pair
         {
             public Pair(int length, int start)
             {

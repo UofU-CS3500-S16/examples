@@ -22,14 +22,21 @@ namespace Interrupt
         /// </summary>
         private void StartButton_Click(object sender, EventArgs e)
         {
+            // Configure the UI prior to the calculation
             int highRange = Int32.Parse(TopOfRange.Text);
             StartButton.Enabled = false;
             StopButton.Enabled = true;
             HailStart.Text = "";
             HailLength.Text = "";
+
+            // Solve the problem on a separate task, blocking until it is finished.
+            // Unfortunately, the UI will be unresponsive while we wait for the task
+            // to complete.
             Task<Pair> task = new Task<Pair>(() => LongestSequence(1, highRange, 1));
             task.Start();
             task.Wait();
+
+            // Display the result
             HailStart.Text = task.Result.Start.ToString();
             HailLength.Text = task.Result.Length.ToString();
             StopButton.Enabled = false;

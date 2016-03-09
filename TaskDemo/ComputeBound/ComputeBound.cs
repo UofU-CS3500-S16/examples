@@ -27,18 +27,21 @@ namespace TaskDemo
             sw.Reset();
             sw.Start();
 
+            // Create a pair of tasks to solve different pieces of the problem
             Task<Pair> odds = new Task<Pair>(() => LongestSequence(1, MAX, 2));
             Task<Pair> evens = new Task<Pair>(() => LongestSequence(2, MAX, 2));
 
+            // Start both tasks
             odds.Start();
             evens.Start();
 
+            // Wait for the tasks to be completed
             odds.Wait();
             evens.Wait();
 
+            // Figure out the overall answer
             Pair pair1 = odds.Result;
             Pair pair2 = evens.Result;
-
             Pair solution2 = (pair1.Length > pair2.Length) ? pair1 : pair2;
 
             sw.Stop();

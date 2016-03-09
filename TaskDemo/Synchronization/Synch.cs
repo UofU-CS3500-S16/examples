@@ -41,15 +41,20 @@ namespace Synchronization
             Console.ReadLine();
         }
 
+        private readonly object sync = new object();
+
         /// <summary>
         /// Increments Total n times.
         /// </summary>
         public void Increment(int n)
         {
-            while (n > 0)
+            lock (sync)
             {
-                Total++;
-                n--;
+                while (n > 0)
+                {
+                    Total++;
+                    n--;
+                }
             }
             Console.WriteLine("Add done");
         }
@@ -59,10 +64,13 @@ namespace Synchronization
         /// </summary>
         public void Decrement(int n)
         {
-            while (n > 0)
+            lock (sync)
             {
-                Total--;
-                n--;
+                while (n > 0)
+                {
+                    Total--;
+                    n--;
+                }
             }
             Console.WriteLine("Sub done");
         }
