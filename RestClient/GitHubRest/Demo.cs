@@ -67,7 +67,7 @@ namespace Restful
         /// Prints out the names of the organizations to which the user belongs.
         /// Illustrates a simple GET request.
         /// </summary>
-        public static async void GetDemo()
+        public static void GetDemo()
         {
             // Create the HttpClient.  It will be automatically closed when
             // this using block is exited.
@@ -80,18 +80,14 @@ namespace Restful
                 // The pathname parameter to GetAsync names a resource (all organizations of the
                 // authenticated user).  This style of naming occurs throughout the API.  The
                 // URL names the resource on which an operation is to be performed.
-
-                // We'll explore the await keyword in detail when we discuss multi-threading.
-                // For now, whenever we call an "awaitable" method (look at the Intellisense 
-                // for GetAsync), we'll prefix the call with the await keyword.
-                HttpResponseMessage response = await client.GetAsync("/user/orgs");
+                HttpResponseMessage response = client.GetAsync("/user/orgs").Result;
 
                 // If the HTTP response code indicates success, we print out the
                 // information that was sent back.
                 if (response.IsSuccessStatusCode)
                 {
                     // Extract the response data, which is an JSON value.
-                    String result = await response.Content.ReadAsStringAsync();
+                    String result = response.Content.ReadAsStringAsync().Result;
 
                     // According to the GitHub API, the response will be a JSON array
                     // that contains one JSON object per organization.  We convert this
@@ -128,14 +124,14 @@ namespace Restful
         /// obtain more if we cared to pursue it.  This illustrates a GET request for which
         /// there is too much data to expect a single self-contained result.
         /// </summary>
-        public static async void GetAllDemo()
+        public static void GetAllDemo()
         {
             using (HttpClient client = CreateClient())
             {
-                HttpResponseMessage response = await client.GetAsync("/users?since=46");
+                HttpResponseMessage response = client.GetAsync("/users?since=46").Result;
                 if (response.IsSuccessStatusCode)
                 {
-                    String result = await response.Content.ReadAsStringAsync();
+                    String result = response.Content.ReadAsStringAsync().Result;
                     dynamic users = JsonConvert.DeserializeObject(result);
 
                     // The response data was an array of objects, each object
@@ -171,7 +167,7 @@ namespace Restful
         /// Prints out all of the commits that have been made on the master branch of one
         /// of my repositories.  This illustrates a GET request that contains parameters.
         /// </summary>
-        public static async void GetWithParamsDemo()
+        public static void GetWithParamsDemo()
         {
             using (HttpClient client = CreateClient())
             {
@@ -184,10 +180,10 @@ namespace Restful
                 // as a parameter in the "query" part of the URL.
                 String url = String.Format("/repos/{0}/{1}/commits?sha={2}", USER_NAME, PUBLIC_REPO, Uri.EscapeDataString("master"));
 
-                HttpResponseMessage response = await client.GetAsync(url);
+                HttpResponseMessage response = client.GetAsync(url).Result;
                 if (response.IsSuccessStatusCode)
                 {
-                    String result = await response.Content.ReadAsStringAsync();
+                    String result = response.Content.ReadAsStringAsync().Result;
 
                     // The deserialized result is an array of objects.  Here, we just print out
                     // the whole thing.
@@ -208,7 +204,7 @@ namespace Restful
         /// For a POST, the parameters go into the body of the request instead of in
         /// the URL.
         /// </summary>
-        public static async void PostDemo()
+        public static void PostDemo()
         {
             using (HttpClient client = CreateClient())
             {
@@ -223,13 +219,13 @@ namespace Restful
 
                 // To send a POST request, we must include the serialized parameter object
                 // in the body of the request.
-                StringContent content = new StringContent(JsonConvert.SerializeObject(data));
-                HttpResponseMessage response = await client.PostAsync("/user/repos", content);
+                StringContent content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
+                HttpResponseMessage response = client.PostAsync("/user/repos", content).Result;
 
                 if (response.IsSuccessStatusCode)
                 {
                     // The deserialized response value is an object that describes the new repository.
-                    String result = await response.Content.ReadAsStringAsync();
+                    String result = response.Content.ReadAsStringAsync().Result;
                     dynamic newRepo = JsonConvert.DeserializeObject(result);
                     Console.WriteLine("New repository: ");
                     Console.WriteLine(newRepo);
@@ -246,7 +242,7 @@ namespace Restful
         /// Commits a file to a repository.  Demonstrates the use of a PUT request.
         /// For a PUT, the parameters go into the body of the request.
         /// </summary>
-        public static async void PutDemo()
+        public static void PutDemo()
         {
             using (HttpClient client = CreateClient())
             {
@@ -255,8 +251,8 @@ namespace Restful
                 data.content = Convert.ToBase64String(Encoding.UTF8.GetBytes("This is a test"));
 
                 String url = String.Format("/repos/{0}/{1}/contents/{2}", USER_NAME, "TestRepo", "file1");
-                StringContent content = new StringContent(JsonConvert.SerializeObject(data));
-                HttpResponseMessage response = await client.PutAsync(url, content);
+                StringContent content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
+                HttpResponseMessage response = client.PutAsync(url, content).Result;
 
                 if (response.IsSuccessStatusCode)
                 {
