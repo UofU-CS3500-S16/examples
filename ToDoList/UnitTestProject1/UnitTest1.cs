@@ -55,7 +55,7 @@ namespace UnitTestProject1
         [ClassInitialize()]
         public static void MyClassInitialize(TestContext testContext)
         {
-            IISAgent.Start("/site:\"ToDoList\" /apppool:\"Clr4IntegratedAppPool\"");
+            IISAgent.Start("/site:\"ToDoList\" /apppool:\"Clr4IntegratedAppPool\" /config:\"..\\..\\..\\.vs\\config\\applicationhost.config\"");
         }
 
         /// <summary>
