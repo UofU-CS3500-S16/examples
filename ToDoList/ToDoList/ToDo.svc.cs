@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net;
 using System.ServiceModel.Web;
 using static System.Net.HttpStatusCode;
@@ -17,100 +18,109 @@ namespace ToDoList
         // simultaneously in the service).  The entire state is lost each time
         // the service shuts down, so eventually we'll need to port this to
         // a proper database.
-        private readonly static List<RegInfo> users = new List<RegInfo>();
-        private readonly static List<ToDoItem> items = new List<ToDoItem>();
+        private readonly static Dictionary<String, UserInfo> users = new Dictionary<String, UserInfo>();
+        private readonly static Dictionary<String, ToDoItem> items = new Dictionary<String, ToDoItem>();
         private static readonly object sync = new object();
 
         /// <summary>
         /// Sets the status code for the next HTTP response.
         /// </summary>
-        private static void SetStatus (HttpStatusCode code)
+        private static void SetStatus(HttpStatusCode code)
         {
             WebOperationContext.Current.OutgoingResponse.StatusCode = code;
         }
 
-        public string Register(RegInfo reg)
+        public string Register(UserInfo user)
         {
             lock (sync)
             {
-                if (reg.Name == null)
+                if (user.Name == null || user.Name.Trim().Length == 0)
                 {
                     SetStatus(Forbidden);
+                    return null;
                 }
-                reg.UserID = Guid.NewGuid().ToString();
-                users.Add(reg);
-                return reg.UserID;
-            }
-        }
-
-        public IList<ToDoItem> GetAllItems(bool includeCompleted, string userID)
-        {
-            List<ToDoItem> result = new List<ToDoItem>();
-            lock (sync)
-            {
-                foreach (ToDoItem item in items)
+                else
                 {
-                    if ((!item.Completed || includeCompleted) && ((userID == "") || (item.UserID == userID)))
-                    {
-                        result.Add(item);
-                    }
+                    string userID = Guid.NewGuid().ToString();
+                    users.Add(userID, user);
+                    return userID;
                 }
             }
-            return result;
         }
 
         public string AddItem(ToDoItem item)
         {
-            //WebOperationContext.Current.OutgoingResponse.StatusCode = Forbidden;
-            RegInfo reg = LookupUser(item.UserID);
-            if (reg == null)
-            {
-                return "";
-            }
-
             lock (sync)
             {
-                item.ItemID = Guid.NewGuid().ToString();
-                items.Add(item);
-                return item.ItemID;
+                if (item.UserID == null || !users.ContainsKey(item.UserID))
+                {
+                    SetStatus(Forbidden);
+                    return null;
+                }
+                else
+                {
+                    string itemID = Guid.NewGuid().ToString();
+                    item.ItemID = itemID;
+                    items.Add(itemID, item);
+                    SetStatus(OK);
+                    return itemID;
+                }
             }
-        }
-
-        public RegInfo LookupUser(string userID)
-        {
-            foreach (RegInfo r in users)
-            {
-                if (r.UserID == userID) return r;
-            }
-            return null;
         }
 
         public void MarkCompleted(string itemID)
         {
             lock (sync)
             {
-                foreach (ToDoItem item in items)
+                ToDoItem item;
+                if (!items.TryGetValue(itemID, out item))
                 {
-                    if (item.ItemID == itemID)
-                    {
-                        item.Completed = true;
-                        return;
-                    }
+                    SetStatus(Forbidden);
+                }
+                else
+                {
+                    item.Completed = true;
+                    SetStatus(OK);
                 }
             }
         }
 
-        public void DeleteItem(string uid)
+        public void DeleteItem(string itemID)
         {
             lock (sync)
             {
-                for (int i = 0; i < items.Count; i++)
+                if (!items.ContainsKey(itemID))
                 {
-                    if (items[i].ItemID.ToString() == uid)
+                    SetStatus(Forbidden);
+                }
+                else
+                {
+                    items.Remove(itemID);
+                }
+            }
+        }
+
+
+        public IList<ToDoItem> GetAllItems(bool completedOnly, string userID)
+        {
+            lock (sync)
+            {
+                if (userID != null && !users.ContainsKey(userID))
+                {
+                    SetStatus(Forbidden);
+                    return null;
+                }
+                else
+                {
+                    List<ToDoItem> result = new List<ToDoItem>();
+                    foreach (ToDoItem item in items.Values)
                     {
-                        items.RemoveAt(i);
-                        return;
+                        if (userID != null && item.UserID != userID) continue;
+                        if (completedOnly && !item.Completed) continue;
+                        result.Add(item);
                     }
+                    SetStatus(OK);
+                    return result;
                 }
             }
         }
