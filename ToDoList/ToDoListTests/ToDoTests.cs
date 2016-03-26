@@ -13,13 +13,10 @@ namespace UnitTestProject1
     /// subsequent tests may not work properly until the stray process is killed
     /// manually.
     /// </summary>
-    public class IISAgent
+    public static class IISAgent
     {
         // Reference to the running process
         private static Process process = null;
-
-        // Location of IIS Express
-        private const string IIS_EXECUTABLE = @"C:\Program Files (x86)\IIS Express\iisexpress.exe";
 
         /// <summary>
         /// Starts IIS
@@ -28,7 +25,8 @@ namespace UnitTestProject1
         {
             if (process == null)
             {
-                ProcessStartInfo info = new ProcessStartInfo(IIS_EXECUTABLE, arguments);
+                Console.WriteLine(Properties.Resources.IIS_EXECUTABLE);
+                ProcessStartInfo info = new ProcessStartInfo(Properties.Resources.IIS_EXECUTABLE, arguments);
                 info.WindowStyle = ProcessWindowStyle.Minimized;
                 info.UseShellExecute = false;
                 process = Process.Start(info);
@@ -47,22 +45,22 @@ namespace UnitTestProject1
         }
     }
     [TestClass]
-    public class UnitTest1
+    public class ToDoTests
     {
         /// <summary>
         /// This is automatically run prior to all the tests to start the server
         /// </summary>
         [ClassInitialize()]
-        public static void MyClassInitialize(TestContext testContext)
+        public static void StartIIS(TestContext testContext)
         {
-            IISAgent.Start("/site:\"ToDoList\" /apppool:\"Clr4IntegratedAppPool\" /config:\"..\\..\\..\\.vs\\config\\applicationhost.config\"");
+            IISAgent.Start(@"/site:""ToDoList"" /apppool:""Clr4IntegratedAppPool"" /config:""..\..\..\.vs\config\applicationhost.config""");
         }
 
         /// <summary>
         /// This is automatically run when all tests have completed to stop the server
         /// </summary>
         [ClassCleanup()]
-        public static void MyClassCleanup()
+        public static void StopIIS()
         {
             IISAgent.Stop();
         }
@@ -77,8 +75,9 @@ namespace UnitTestProject1
             user.Email = "email";
             Response r = client.DoPostAsync(user, "RegisterUser").Result;
             Assert.AreEqual(OK, r.Status);
-            Assert.AreEqual(36, r.Data.ToString().Length);
+            Assert.AreEqual(36, r.Data.Length);
             Console.WriteLine(r.Data.ToString());
+            Assert.AreEqual(Forbidden, client.DoDeleteAsync("DeleteItem/hello").Result);
         }
     }
 }

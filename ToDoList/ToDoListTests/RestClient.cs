@@ -101,7 +101,7 @@ namespace Rest
         {
             using (HttpClient client = CreateClient())
             {
-                HttpResponseMessage response = await client.PutAsync("ToDo.svc/" + url, null);
+                HttpResponseMessage response = await client.DeleteAsync("ToDo.svc/" + url);
 
                 if (response.IsSuccessStatusCode)
                 {
