@@ -1,0 +1,1 @@
+﻿select Phones.CardNum, Name, Phone from Phones, Patrons where Phones.CardNum = Patrons.CardNum

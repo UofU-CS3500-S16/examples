@@ -1,0 +1,1 @@
+﻿delete from Patrons where Name = 'Bungie'
