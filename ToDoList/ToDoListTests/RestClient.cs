@@ -55,7 +55,7 @@ namespace Rest
                 }
                 else
                 {
-                    return response.StatusCode;
+                    return new Response { Status = response.StatusCode };
                 }
             }
         }
@@ -73,7 +73,7 @@ namespace Rest
                 }
                 else
                 {
-                    return response.StatusCode;
+                    return new Response { Status = response.StatusCode };
                 }
             }
         }
@@ -92,7 +92,7 @@ namespace Rest
                 }
                 else
                 {
-                    return response.StatusCode;
+                    return new Response { Status = response.StatusCode };
                 }
             }
         }
@@ -110,7 +110,7 @@ namespace Rest
                 }
                 else
                 {
-                    return response.StatusCode;
+                    return new Response { Status = response.StatusCode };
                 }
             }
         }

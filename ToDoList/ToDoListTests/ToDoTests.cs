@@ -77,7 +77,7 @@ namespace UnitTestProject1
             Assert.AreEqual(OK, r.Status);
             Assert.AreEqual(36, r.Data.Length);
             Console.WriteLine(r.Data.ToString());
-            Assert.AreEqual(Forbidden, client.DoDeleteAsync("DeleteItem/hello").Result);
+            Assert.AreEqual(Forbidden, client.DoDeleteAsync("DeleteItem/hello").Result.Status);
         }
     }
 }
