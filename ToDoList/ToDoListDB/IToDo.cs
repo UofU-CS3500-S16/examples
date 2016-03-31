@@ -55,7 +55,5 @@ namespace ToDoList
         /// </summary>
         [WebGet(UriTemplate = "/GetAllItems?completed={completedOnly}&user={userID}")]
         IList<ToDoItem> GetAllItems(bool completedOnly, string userID);
-
-
     }
 }

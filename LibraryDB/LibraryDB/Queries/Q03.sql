@@ -1,1 +1,2 @@
-﻿select * from Titles where Title > 'R' and Author < 'Seuss'
+﻿select Author from Titles where Title > 'R' and Author < 'Seuss'
+order by Title asc

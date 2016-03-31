@@ -43,6 +43,7 @@ namespace ToDoList
                 {
                     string userID = Guid.NewGuid().ToString();
                     users.Add(userID, user);
+                    SetStatus(Created);
                     return userID;
                 }
             }
@@ -62,7 +63,7 @@ namespace ToDoList
                     string itemID = Guid.NewGuid().ToString();
                     item.ItemID = itemID;
                     items.Add(itemID, item);
-                    SetStatus(OK);
+                    SetStatus(Created);
                     return itemID;
                 }
             }

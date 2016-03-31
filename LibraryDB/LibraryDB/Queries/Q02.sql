@@ -1,1 +1,1 @@
-﻿select Title, Author from Titles
+﻿select Author from Titles

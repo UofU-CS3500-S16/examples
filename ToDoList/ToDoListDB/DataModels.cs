@@ -7,13 +7,6 @@
         public string Email { get; set; }
     }
 
-    public class Item
-    {
-        public string UserID { get; set; }
-
-        public string Description { get; set; }
-    }
-
     public class ToDoItem
     {
         public string UserID { get; set; }

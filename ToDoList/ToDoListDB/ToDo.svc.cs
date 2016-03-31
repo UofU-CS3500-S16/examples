@@ -46,16 +46,16 @@ namespace ToDoList
                 try
                 {
                     // Insert a new user into the Users table
-                    SqlCommand command = new SqlCommand("insert into Users (UserID, Name, Email) values(@UserID, @Name, @Email)", conn, trans);
-                    string userID = Guid.NewGuid().ToString();
-                    command.Parameters.AddWithValue("@UserToken", userID);
-                    command.Parameters.AddWithValue("@Nickname", user.Name.Trim());
-                    command.Parameters.AddWithValue("@Email", user.Email.Trim());
-                    command.ExecuteNonQuery();
-
-                    // Send back the new UserToken
-                    SetStatus(Created);
-                    return userID;
+                    using (SqlCommand command = new SqlCommand("insert into Users (UserID, Name, Email) values(@UserID, @Nickname, @Email)", conn, trans))
+                    {
+                        string userID = Guid.NewGuid().ToString();
+                        command.Parameters.AddWithValue("@UserID", userID);
+                        command.Parameters.AddWithValue("@Nickname", user.Name.Trim());
+                        command.Parameters.AddWithValue("@Email", user.Email.Trim());
+                        command.ExecuteNonQuery();
+                        SetStatus(Created);
+                        return userID;
+                    }
                 }
                 catch (Exception)
                 {
@@ -86,23 +86,27 @@ namespace ToDoList
                 try
                 {
                     // Insert a new user into the Items table
-                    SqlCommand command = new SqlCommand("select UserID from Users where UserID = @UserID", conn, trans);
-                    command.Parameters.AddWithValue("@UserID", item.UserID);
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    using (SqlCommand command = new SqlCommand("select UserID from Users where UserID = @UserID", conn, trans))
                     {
-                        if (!reader.Read())
+                        command.Parameters.AddWithValue("@UserID", item.UserID);
+                        using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            SetStatus(Forbidden);
-                            return null;
+                            if (!reader.Read())
+                            {
+                                SetStatus(Forbidden);
+                                return null;
+                            }
                         }
                     }
 
-                    command = new SqlCommand("insert into Items (UserID, Description, Completed) output inserted.ItemID values(@UserID, @Desc, @Completed)", conn, trans);
-                    command.Parameters.AddWithValue("@UserID", item.UserID);
-                    command.Parameters.AddWithValue("@Desc", item.Description.Trim());
-                    command.Parameters.AddWithValue("@Completed", item.Completed);
-                    SetStatus(OK);
-                    return command.ExecuteScalar().ToString();
+                    using (SqlCommand command = new SqlCommand("insert into Items (UserID, Description, Completed) output inserted.ItemID values(@UserID, @Desc, @Completed)", conn, trans))
+                    {
+                        command.Parameters.AddWithValue("@UserID", item.UserID);
+                        command.Parameters.AddWithValue("@Desc", item.Description.Trim());
+                        command.Parameters.AddWithValue("@Completed", item.Completed);
+                        SetStatus(Created);
+                        return command.ExecuteScalar().ToString();
+                    }
                 }
                 catch (Exception)
                 {
@@ -133,16 +137,18 @@ namespace ToDoList
 
                 try
                 {
-                    SqlCommand command = new SqlCommand("update Items set Completed=@True where ItemID=@ItemID", conn, trans);
-                    command.Parameters.AddWithValue("@True", true);
-                    command.Parameters.AddWithValue("@ItemID", itemNum);
-                    if (command.ExecuteNonQuery() == 0)
+                    using (SqlCommand command = new SqlCommand("update Items set Completed=@True where ItemID=@ItemID", conn, trans))
                     {
-                        SetStatus(Forbidden);
-                    }
-                    else
-                    {
-                        SetStatus(OK);
+                        command.Parameters.AddWithValue("@True", true);
+                        command.Parameters.AddWithValue("@ItemID", itemNum);
+                        if (command.ExecuteNonQuery() == 0)
+                        {
+                            SetStatus(Forbidden);
+                        }
+                        else
+                        {
+                            SetStatus(OK);
+                        }
                     }
                 }
                 catch (Exception)
@@ -173,15 +179,17 @@ namespace ToDoList
 
                 try
                 {
-                    SqlCommand command = new SqlCommand("delete from Items where ItemId = @ItemID", conn, trans);
-                    command.Parameters.AddWithValue("@ItemID", itemNum);
-                    if (command.ExecuteNonQuery() == 0)
+                    using (SqlCommand command = new SqlCommand("delete from Items where ItemId = @ItemID", conn, trans))
                     {
-                        SetStatus(Forbidden);
-                    }
-                    else
-                    {
-                        SetStatus(OK);
+                        command.Parameters.AddWithValue("@ItemID", itemNum);
+                        if (command.ExecuteNonQuery() == 0)
+                        {
+                            SetStatus(Forbidden);
+                        }
+                        else
+                        {
+                            SetStatus(OK);
+                        }
                     }
                 }
                 catch (Exception)
@@ -196,15 +204,8 @@ namespace ToDoList
             }
         }
 
-
         public IList<ToDoItem> GetAllItems(bool completedOnly, string userID)
         {
-            if (userID == null)
-            {
-                SetStatus(Forbidden);
-                return null;
-            }
-
             using (SqlConnection conn = new SqlConnection(ToDoDB))
             {
                 conn.Open();
@@ -214,14 +215,16 @@ namespace ToDoList
                 {
                     if (userID != null)
                     {
-                        SqlCommand cmd = new SqlCommand("select UserID from Users where UserID = @UserID", conn, trans);
-                        cmd.Parameters.AddWithValue("@UserID", userID);
-                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        using (SqlCommand cmd = new SqlCommand("select UserID from Users where UserID = @UserID", conn, trans))
                         {
-                            if (reader.HasRows)
+                            cmd.Parameters.AddWithValue("@UserID", userID);
+                            using (SqlDataReader reader = cmd.ExecuteReader())
                             {
-                                SetStatus(Forbidden);
-                                return null;
+                                if (!reader.HasRows)
+                                {
+                                    SetStatus(Forbidden);
+                                    return null;
+                                }
                             }
                         }
                     }
@@ -233,27 +236,32 @@ namespace ToDoList
                     }
                     if (userID != null)
                     {
-                        query += " and UserID = @UserID";
+                        query += " and Items.UserID = @UserID";
                     }
 
-                    SqlCommand command = new SqlCommand(query, conn, trans);
-                    command.Parameters.AddWithValue("@UserID", userID);
-
-                    List<ToDoItem> result = new List<ToDoItem>();
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    using (SqlCommand command = new SqlCommand(query, conn, trans))
                     {
-                        while (reader.HasRows)
+                        if (userID != null)
                         {
-                            result.Add(new ToDoItem
-                            {
-                                Description = (string)reader["Description"],
-                                Completed = (bool)reader["Completed"],
-                                ItemID = reader["ItemID"].ToString()
-                            });
+                            command.Parameters.AddWithValue("@UserID", userID);
                         }
+
+                        List<ToDoItem> result = new List<ToDoItem>();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                result.Add(new ToDoItem
+                                {
+                                    Description = (string)reader["Description"],
+                                    Completed = (bool)reader["Completed"],
+                                    ItemID = reader["ItemID"].ToString()
+                                });
+                            }
+                        }
+                        SetStatus(OK);
+                        return result;
                     }
-                    SetStatus(OK);
-                    return result;
                 }
                 catch (Exception)
                 {
