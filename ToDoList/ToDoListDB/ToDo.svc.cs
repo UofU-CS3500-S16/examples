@@ -143,43 +143,45 @@ namespace ToDoList
             using (SqlConnection conn = new SqlConnection(ToDoDB))
             {
                 conn.Open();
-                SqlTransaction trans = conn.BeginTransaction();
-
-                // Here, the SqlCommand is a select query.  We are interested in whether item.UserID exists in
-                // the Users table.
-                using (SqlCommand command = new SqlCommand("select UserID from Users where UserID = @UserID", conn, trans))
+                using (SqlTransaction trans = conn.BeginTransaction())
                 {
-                    command.Parameters.AddWithValue("@UserID", item.UserID);
 
-                    // This executes a query (i.e. a select statement).  The result is an
-                    // SqlDataReader that you can use to iterate through the rows in the response.
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    // Here, the SqlCommand is a select query.  We are interested in whether item.UserID exists in
+                    // the Users table.
+                    using (SqlCommand command = new SqlCommand("select UserID from Users where UserID = @UserID", conn, trans))
                     {
-                        // In this we don't actually need to read any data; we only need
-                        // to know whether a row was returned.
-                        if (!reader.HasRows)
+                        command.Parameters.AddWithValue("@UserID", item.UserID);
+
+                        // This executes a query (i.e. a select statement).  The result is an
+                        // SqlDataReader that you can use to iterate through the rows in the response.
+                        using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            SetStatus(Forbidden);
-                            trans.Commit();
-                            return null;
+                            // In this we don't actually need to read any data; we only need
+                            // to know whether a row was returned.
+                            if (!reader.HasRows)
+                            {
+                                SetStatus(Forbidden);
+                                trans.Commit();
+                                return null;
+                            }
                         }
                     }
-                }
 
-                // Here we are executing an insert command, but notice the "output inserted.ItemID" portion.  
-                // We are asking the DB to send back the auto-generated ItemID.
-                using (SqlCommand command = new SqlCommand("insert into Items (UserID, Description, Completed) output inserted.ItemID values(@UserID, @Desc, @Completed)", conn, trans))
-                {
-                    command.Parameters.AddWithValue("@UserID", item.UserID);
-                    command.Parameters.AddWithValue("@Desc", item.Description.Trim());
-                    command.Parameters.AddWithValue("@Completed", item.Completed);
+                    // Here we are executing an insert command, but notice the "output inserted.ItemID" portion.  
+                    // We are asking the DB to send back the auto-generated ItemID.
+                    using (SqlCommand command = new SqlCommand("insert into Items (UserID, Description, Completed) output inserted.ItemID values(@UserID, @Desc, @Completed)", conn, trans))
+                    {
+                        command.Parameters.AddWithValue("@UserID", item.UserID);
+                        command.Parameters.AddWithValue("@Desc", item.Description.Trim());
+                        command.Parameters.AddWithValue("@Completed", item.Completed);
 
-                    // We execute the command with the ExecuteScalar method, which will return to
-                    // us the requested auto-generated ItemID.
-                    string itemID = command.ExecuteScalar().ToString();
-                    SetStatus(Created);
-                    trans.Commit();
-                    return itemID;
+                        // We execute the command with the ExecuteScalar method, which will return to
+                        // us the requested auto-generated ItemID.
+                        string itemID = command.ExecuteScalar().ToString();
+                        SetStatus(Created);
+                        trans.Commit();
+                        return itemID;
+                    }
                 }
             }
         }
@@ -196,25 +198,26 @@ namespace ToDoList
             using (SqlConnection conn = new SqlConnection(ToDoDB))
             {
                 conn.Open();
-                SqlTransaction trans = conn.BeginTransaction();
-
-                // In this case the command is an update.
-                using (SqlCommand command = new SqlCommand("update Items set Completed=@True where ItemID=@ItemID", conn, trans))
+                using (SqlTransaction trans = conn.BeginTransaction())
                 {
-                    command.Parameters.AddWithValue("@True", true);
-                    command.Parameters.AddWithValue("@ItemID", itemNum);
+                    // In this case the command is an update.
+                    using (SqlCommand command = new SqlCommand("update Items set Completed=@True where ItemID=@ItemID", conn, trans))
+                    {
+                        command.Parameters.AddWithValue("@True", true);
+                        command.Parameters.AddWithValue("@ItemID", itemNum);
 
-                    // We pay attention to the number of rows modified.  If no rows were modified,
-                    // we know that there was no item with the given itemNum, and we report an error.
-                    if (command.ExecuteNonQuery() == 0)
-                    {
-                        SetStatus(Forbidden);
+                        // We pay attention to the number of rows modified.  If no rows were modified,
+                        // we know that there was no item with the given itemNum, and we report an error.
+                        if (command.ExecuteNonQuery() == 0)
+                        {
+                            SetStatus(Forbidden);
+                        }
+                        else
+                        {
+                            SetStatus(OK);
+                        }
+                        trans.Commit();
                     }
-                    else
-                    {
-                        SetStatus(OK);
-                    }
-                    trans.Commit();
                 }
             }
         }
@@ -231,21 +234,22 @@ namespace ToDoList
             using (SqlConnection conn = new SqlConnection(ToDoDB))
             {
                 conn.Open();
-                SqlTransaction trans = conn.BeginTransaction();
-
-                // Here we're doing a delete command.
-                using (SqlCommand command = new SqlCommand("delete from Items where ItemId = @ItemID", conn, trans))
+                using (SqlTransaction trans = conn.BeginTransaction())
                 {
-                    command.Parameters.AddWithValue("@ItemID", itemNum);
-                    if (command.ExecuteNonQuery() == 0)
+                    // Here we're doing a delete command.
+                    using (SqlCommand command = new SqlCommand("delete from Items where ItemId = @ItemID", conn, trans))
                     {
-                        SetStatus(Forbidden);
+                        command.Parameters.AddWithValue("@ItemID", itemNum);
+                        if (command.ExecuteNonQuery() == 0)
+                        {
+                            SetStatus(Forbidden);
+                        }
+                        else
+                        {
+                            SetStatus(OK);
+                        }
+                        trans.Commit();
                     }
-                    else
-                    {
-                        SetStatus(OK);
-                    }
-                    trans.Commit();
                 }
             }
         }
@@ -255,68 +259,69 @@ namespace ToDoList
             using (SqlConnection conn = new SqlConnection(ToDoDB))
             {
                 conn.Open();
-                SqlTransaction trans = conn.BeginTransaction();
-
-                if (userID != null)
-                {
-                    // This is another select query, done to validate the userID
-                    using (SqlCommand cmd = new SqlCommand("select UserID from Users where UserID = @UserID", conn, trans))
-                    {
-                        cmd.Parameters.AddWithValue("@UserID", userID);
-                        using (SqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            if (!reader.HasRows)
-                            {
-                                SetStatus(Forbidden);
-                                trans.Commit();
-                                return null;
-                            }
-                        }
-                    }
-                }
-
-                // Notice that we have to work a bit to construct the proper query, since it depends on what
-                // options the user specified.
-                String query = "select Description, Completed, ItemID from Items, Users where Items.UserID = Users.UserID";
-                if (completedOnly)
-                {
-                    query += " and Completed = 1";
-                }
-                if (userID != null)
-                {
-                    query += " and Items.UserID = @UserID";
-                }
-
-                using (SqlCommand command = new SqlCommand(query, conn, trans))
+                using (SqlTransaction trans = conn.BeginTransaction())
                 {
                     if (userID != null)
                     {
-                        command.Parameters.AddWithValue("@UserID", userID);
-                    }
-
-                    // We are going to be creating some ToDoItem objects and returning them in
-                    // this list.
-                    List<ToDoItem> result = new List<ToDoItem>();
-
-                    // As with all queries, we use the ExecuteReader method:
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        // This time we care about the rows being retuned.  The Read
-                        // method lets us iterate through them one at a time.
-                        while (reader.Read())
+                        // This is another select query, done to validate the userID
+                        using (SqlCommand cmd = new SqlCommand("select UserID from Users where UserID = @UserID", conn, trans))
                         {
-                            // Notice how we extract the values from each row by column name.
-                            result.Add(new ToDoItem
+                            cmd.Parameters.AddWithValue("@UserID", userID);
+                            using (SqlDataReader reader = cmd.ExecuteReader())
                             {
-                                Description = (string)reader["Description"],
-                                Completed = (bool)reader["Completed"],
-                                ItemID = reader["ItemID"].ToString()
-                            });
+                                if (!reader.HasRows)
+                                {
+                                    SetStatus(Forbidden);
+                                    trans.Commit();
+                                    return null;
+                                }
+                            }
                         }
                     }
-                    SetStatus(OK);
-                    trans.Commit();
-                    return result;
+
+                    // Notice that we have to work a bit to construct the proper query, since it depends on what
+                    // options the user specified.
+                    String query = "select Description, Completed, ItemID from Items, Users where Items.UserID = Users.UserID";
+                    if (completedOnly)
+                    {
+                        query += " and Completed = 1";
+                    }
+                    if (userID != null)
+                    {
+                        query += " and Items.UserID = @UserID";
+                    }
+
+                    using (SqlCommand command = new SqlCommand(query, conn, trans))
+                    {
+                        if (userID != null)
+                        {
+                            command.Parameters.AddWithValue("@UserID", userID);
+                        }
+
+                        // We are going to be creating some ToDoItem objects and returning them in
+                        // this list.
+                        List<ToDoItem> result = new List<ToDoItem>();
+
+                        // As with all queries, we use the ExecuteReader method:
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            // This time we care about the rows being retuned.  The Read
+                            // method lets us iterate through them one at a time.
+                            while (reader.Read())
+                            {
+                                // Notice how we extract the values from each row by column name.
+                                result.Add(new ToDoItem
+                                {
+                                    Description = (string)reader["Description"],
+                                    Completed = (bool)reader["Completed"],
+                                    ItemID = reader["ItemID"].ToString()
+                                });
+                            }
+                        }
+                        SetStatus(OK);
+                        trans.Commit();
+                        return result;
+                    }
                 }
             }
         }
