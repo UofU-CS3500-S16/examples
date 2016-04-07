@@ -1,0 +1,45 @@
+﻿Author: H. James de St. Germain
+Date:   Fall 2013
+
+Questions and Answers for labs
+
+1) Q: Why is the count not equal to 0?
+   A: multiple threads are accessing the data at the same time.  Because an add or subtract is not atomic 
+      (a single hardware step) and because any thread can be at any stage of execution when it is interrupted and
+      swapped out, it is very easy to corrupt the data in a variable.
+
+2) Q: How do you fix this?
+   A: Lock the data.   Change the contents of the Synch.cs file, modify function to:
+
+        for (int i = 0; i < int.MaxValue / 100; i++)
+        {
+            lock (this)
+            {
+                count++;
+            }
+
+            lock (this)
+            {
+                count--;
+            }
+        }
+
+
+3) Q: Why is i not shared?
+   A: i is saved on the stack.  count is saved on the heap.  Each thread has it's own stack.
+      Every thread shares the same heap.
+
+4) Q: What is Threads2.demo doing?
+   A: This program demonstrates the interweaved nature of threading and how the main
+      program is also a thread.  Thus the main program and its child thread are both outputting
+      characters to the screen at the same time.  Because they share the same objects data, when
+      the main thread changes the "symbol" the child thread starts doing something different (printing @s)
+
+5) Q: What is the purpose of the while(true) in Threads 3
+   A: This is purely "cosmetic" in that it is there to allow the main thread to "peak" at the
+      child task and make sure that it is still running (and then let the user of the program know this).  This is
+      very similar to a GUI where the GUI is "spinning" every second to find out the status of the work being done.
+      Though in a GUI, hopefully you would be using Events (see the BackgroundWorker discussion from class).
+
+6) Q: How do you get information out of a task?
+   A: Use the Task<int> notation for the type and the task.Result property to get the result.
