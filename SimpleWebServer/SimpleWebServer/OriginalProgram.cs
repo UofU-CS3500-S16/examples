@@ -4,12 +4,13 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Text.RegularExpressions;
 
-namespace SimpleWebServer
+namespace SimpleWebServerx
 {
     public class WebServer
     {
-        public static void Main()
+        public static void Mainx()
         {
             new WebServer();
             Console.Read();
@@ -36,19 +37,29 @@ namespace SimpleWebServer
     {
         private StringSocket socket;
         private int contentLength;
+        private int lineCount;
 
         public HttpRequest(StringSocket socket)
         {
             this.socket = socket;
             this.contentLength = 0;
+            this.lineCount = 0;
             socket.BeginReceive(LineReceived, socket);
         }
 
         private void LineReceived(string s, Exception e, object o)
         {
+            lineCount++;
             Console.WriteLine(s);
             if (s != null)
             {
+                if (lineCount == 1)
+                {
+                    Regex r = new Regex(@"^(\S+)\s+(\S+)");
+                    Match m = r.Match(s);
+                    Console.WriteLine("Method: " + m.Groups[1].Value);
+                    Console.WriteLine("URL: " + m.Groups[2].Value);
+                }
                 if (s.StartsWith("Content-Length:"))
                 {
                     contentLength = Int32.Parse(s.Substring(16).Trim());
