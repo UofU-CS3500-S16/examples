@@ -88,9 +88,9 @@ namespace SimpleWebServer
                             new Person { Name = "June", Eyes = "Blue" },
                             new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
 
-                ss.BeginSend("HTTP/1.1 200 OK\n", Ignore, null);
-                ss.BeginSend("Content-Type: application/json\n", Ignore, null);
-                ss.BeginSend("Content-Length: " + result.Length + "\n", Ignore, null);
+                ss.BeginSend("HTTP/1.1 200 OK\r\n", Ignore, null);
+                ss.BeginSend("Content-Type: application/json\r\n", Ignore, null);
+                ss.BeginSend("Content-Length: " + result.Length + "\r\n", Ignore, null);
                 ss.BeginSend("\r\n", Ignore, null);
                 ss.BeginSend(result, (ex, py) => { ss.Shutdown(); }, null);
             }
