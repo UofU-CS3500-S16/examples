@@ -2,6 +2,8 @@
 using System.Text;
 using System.Net;
 using System.Net.Sockets;
+using System.Threading;   // ReaderWriterLockSlim
+using System.Collections.Generic;
 
 namespace Chat
 {
@@ -14,11 +16,13 @@ namespace Chat
         static void Main(string[] args)
         {
             new SimpleChatServer(4000);
-            //Console.ReadLine();
+            Console.ReadLine();
         }
 
         // Listens for incoming connection requests
         private TcpListener server;
+
+        private List<ClientConnection> clients = new List<ClientConnection>();
 
         /// <summary>
         /// Creates a SimpleChatServer that listens for connection requests on port 4000.
@@ -54,7 +58,33 @@ namespace Chat
 
             // We create a new ClientConnection, which will take care of communicating with
             // the remote client.
-            new ClientConnection(s);
+            try
+            {
+                sync.EnterWriteLock();
+                clients.Add(new ClientConnection(s, this));
+            }
+            finally
+            {
+                sync.ExitWriteLock();
+            }
+        }
+
+        private readonly ReaderWriterLockSlim sync = new ReaderWriterLockSlim();
+
+        public void SendToAllClients(string msg)
+        {
+            try
+            {
+                sync.EnterReadLock();
+                foreach (ClientConnection c in clients)
+                {
+                    c.SendMessage(msg);
+                }
+            }
+            finally
+            {
+                sync.ExitReadLock();
+            }
         }
     }
 
@@ -99,18 +129,20 @@ namespace Chat
         private byte[] pendingBytes = new byte[0];
         private int pendingIndex = 0;
 
+        // Name of chatter or null if unknown
+        private string name = null;
+        private SimpleChatServer server;
+
         /// <summary>
         /// Creates a ClientConnection from the socket, then begins communicating with it.
         /// </summary>
-        public ClientConnection(Socket s)
+        public ClientConnection(Socket s, SimpleChatServer server)
         {
+            this.server = server;
             // Record the socket and clear incoming
             socket = s;
             incoming = new StringBuilder();
             outgoing = new StringBuilder();
-
-            // Send a welcome message to the remote client
-            SendMessage("Welcome!\r\n");
 
             // Ask the socket to call MessageReceive as soon as up to 1024 bytes arrive.
             socket.BeginReceive(incomingBytes, 0, incomingBytes.Length,
@@ -139,7 +171,7 @@ namespace Chat
                 // Convert the bytes into characters and appending to incoming
                 int charsRead = decoder.GetChars(incomingBytes, 0, bytesRead, incomingChars, 0, false);
                 incoming.Append(incomingChars, 0, charsRead);
-                //Console.WriteLine(incoming);
+                Console.WriteLine(incoming);
 
                 // Echo any complete lines, after capitalizing them
                 int lastNewline = -1;
@@ -149,7 +181,15 @@ namespace Chat
                     if (incoming[i] == '\n')
                     {
                         String line = incoming.ToString(start, i + 1 - start);
-                        SendMessage(line.ToUpper());
+                        if (name == null)
+                        {
+                            name = line.Substring(0, line.Length - 2);
+                            server.SendToAllClients("Welcome " + name + "\r\n");
+                        }
+                        else
+                        {
+                            server.SendToAllClients(name + "> " + line.ToUpper());
+                        }
                         lastNewline = i;
                         start = i + 1;
                     }
@@ -165,7 +205,7 @@ namespace Chat
         /// <summary>
         /// Sends a string to the client
         /// </summary>
-        private void SendMessage(string lines)
+        public void SendMessage(string lines)
         {
             // Get exclusive access to send mechanism
             lock (sendSync)
@@ -176,13 +216,8 @@ namespace Chat
                 // If there's not a send ongoing, start one.
                 if (!sendIsOngoing)
                 {
-                    Console.WriteLine("Appending a " + lines.Length + " char line, starting send mechanism");
                     sendIsOngoing = true;
                     SendBytes();
-                }
-                else
-                {
-                    Console.WriteLine("\tAppending a " + lines.Length + " char line, send mechanism already running");
                 }
             }
         }
@@ -197,7 +232,6 @@ namespace Chat
             // keep doing that.
             if (pendingIndex < pendingBytes.Length)
             {
-                Console.WriteLine("\tSending " + (pendingBytes.Length - pendingIndex) + " bytes");
                 socket.BeginSend(pendingBytes, pendingIndex, pendingBytes.Length - pendingIndex,
                                  SocketFlags.None, MessageSent, null);
             }
@@ -208,7 +242,6 @@ namespace Chat
             {
                 pendingBytes = encoding.GetBytes(outgoing.ToString());
                 pendingIndex = 0;
-                Console.WriteLine("\tConverting " + outgoing.Length + " chars into " + pendingBytes.Length + " bytes, sending them");
                 outgoing.Clear();
                 socket.BeginSend(pendingBytes, 0, pendingBytes.Length,
                                  SocketFlags.None, MessageSent, null);
@@ -217,7 +250,6 @@ namespace Chat
             // If there's nothing to send, shut down for the time being.
             else
             {
-                Console.WriteLine("Shutting down send mechanism\n");
                 sendIsOngoing = false;
             }
         }
@@ -229,7 +261,6 @@ namespace Chat
         {
             // Find out how many bytes were actually sent
             int bytesSent = socket.EndSend(result);
-            Console.WriteLine("\t" + bytesSent + " bytes were successfully sent");
 
             // Get exclusive access to send mechanism
             lock (sendSync)

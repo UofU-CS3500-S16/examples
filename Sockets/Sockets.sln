@@ -9,6 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatServer1", "ChatServer1\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatServer2", "ChatServer2\ChatServer2.csproj", "{6F2A9C07-59FA-4A2E-AB6B-DFBB86E882AA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{979FFDC6-4DED-47FC-BEB5-A009D5DDD1AF}"
+	ProjectSection(SolutionItems) = preProject
+		StringSocket.dll = StringSocket.dll
+		StringSocket.XML = StringSocket.XML
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

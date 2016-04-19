@@ -4,6 +4,8 @@ using System.Net.Sockets;
 using Chat;
 using System.Threading.Tasks;
 using System.Text;
+using CustomNetworking;
+using System.Threading;
 
 namespace ChatServerTester
 {
@@ -22,7 +24,7 @@ namespace ChatServerTester
             BetterTestInstance("Test 1\r\nHello world\r\nThis is a test\r\n");
 
             // Run 10 tasks that test the server in parallel.
-            
+
             Task[] tasks = new Task[10];
             for (int i = 0; i < tasks.Length; i++)
             {
@@ -99,6 +101,89 @@ namespace ChatServerTester
             t2.Wait();
             String result = encoding.GetString(incomingBuffer);
             Assert.AreEqual(expectedString, result);
+        }
+
+        [TestMethod]
+        public void VolumeTest()
+        {
+            // Ceate a chat server listening on port 4000
+            new SimpleChatServer(4000);
+
+            // Open a socket to the server
+            TcpClient client = new TcpClient("localhost", 4000);
+            StringSocket ss = new StringSocket(client.Client, encoding);
+
+            // Number of strings to use
+            int LENGTH = 1000;
+
+            // Generate LENGTH strings of random length.
+            Random rand = new Random();
+            string[] lines = new string[LENGTH];
+            for (int i = 0; i < LENGTH; i++)
+            {
+                int length = rand.Next(1000);
+                StringBuilder sb = new StringBuilder();
+                for (int j = 0; j < length; j++)
+                {
+                    sb.Append(rand.Next(10));
+                }
+                lines[i] = sb.ToString();
+            }
+
+            // Send out the strings in a separate task
+            Task t1 = Task.Run(() =>
+            {
+                foreach (string line in lines)
+                {
+                    ss.BeginSend(line + "\n", (e, p) => { }, null);
+                }
+            });
+
+            // Receive the strings, store them in receivedLines
+            string[] receivedLines = new string[LENGTH+1];
+
+            // Number of lines we expect to receive
+            int count = receivedLines.Length;
+
+            // Used to signal when all lines have been received
+            ManualResetEvent mre = new ManualResetEvent(false);
+
+            // Begin receiving process
+            int lineNumber = 0;
+            ss.BeginReceive((s, e, p) => { receivedLines[0] = s; Dec(ref count, mre); }, null);
+            foreach (string line in lines)
+            {
+                lineNumber++;
+                int index = lineNumber;
+                ss.BeginReceive((s, e, p) => { receivedLines[index] = s; Dec(ref count, mre); }, null);
+            }
+
+            // Wait until all responses are in, then do assertions on the testing thread
+            // Doing them on the other threads won't work
+            if (!mre.WaitOne(5000))
+            {
+                // The mre will return false after 5000 milliseconds if it isn't set first.
+                // If this happens, not all of the lines were received.  The test should fail.
+                Assert.Fail();
+            }
+
+            Assert.AreEqual("Welcome!\r", receivedLines[0]);
+            for (int i = 0; i < lines.Length; i++)
+            {
+                Assert.AreEqual(lines[i], receivedLines[i + 1]);
+            }
+        }
+
+        /// <summary>
+        /// Atomically decrements the count, signals when the count reaches zero.
+        /// </summary>
+        private void Dec (ref int count, ManualResetEvent mre)
+        {
+            Interlocked.Decrement(ref count);
+            if (count <= 0)
+            {
+                mre.Set();
+            }
         }
     }
 }
